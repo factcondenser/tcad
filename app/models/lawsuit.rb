@@ -1,0 +1,2 @@
+class Lawsuit < ApplicationRecord
+end

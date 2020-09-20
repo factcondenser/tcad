@@ -1,0 +1,2 @@
+class Arb < ApplicationRecord
+end

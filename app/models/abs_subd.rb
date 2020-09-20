@@ -1,0 +1,2 @@
+class AbsSubd < ApplicationRecord
+end

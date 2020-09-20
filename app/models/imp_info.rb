@@ -1,0 +1,2 @@
+class ImpInfo < ApplicationRecord
+end

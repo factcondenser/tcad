@@ -1,0 +1,2 @@
+class LandDet < ApplicationRecord
+end

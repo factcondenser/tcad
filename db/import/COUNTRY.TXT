@@ -1,0 +1,245 @@
+AD   ANDORRA                                           
+AE   UNITED ARAB EMIRATES                              
+AF   AFGHANISTAN                                       
+AG   ANTIGUA AND BARBUDA                               
+AI   ANGUILLA                                          
+AL   ALBANIA                                           
+AM   ARMENIA                                           
+AN   NETHERLANDS ANTILLES                              
+AO   ANGOLA                                            
+AQ   ANTARTICA                                         
+AR   ARGENTINA                                         
+AS   AMERICAN SAMOA                                    
+AT   AUSTRIA                                           
+AU   AUSTRALIA                                         
+AW   ARUBA                                             
+AX   ALAND ISLAND                                      
+AZ   AZERBAIJAN                                        
+BA   BOSNIA AND HERZEGOVINA                            
+BB   BARBADOS                                          
+BD   BANGLADESH                                        
+BE   BELGUIM                                           
+BF   BURKINA FASO                                      
+BG   BULGARIA                                          
+BH   BAHRAIN                                           
+BI   BURUNDI                                           
+BJ   BENIN                                             
+BM   BERMUDA                                           
+BN   BRUNEI DARUSSALAM                                 
+BO   BOLIVIA                                           
+BR   BRAZIL                                            
+BS   BAHAMAS                                           
+BT   BHUTAN                                            
+BV   BOUVET ISLAND                                     
+BW   BOTSWANA                                          
+BY   BELARUS                                           
+BZ   BELIZE                                            
+CA   CANADA                                            
+CC   COCOS (KEELING) ISLANDS                           
+CD   CONGO, THE DEMOCRATIC REPUBLIC OF (ZAIRE)         
+CF   CENTRAL AFRICAN REPUBLIC                          
+CG   CONGO, THE REPUBLIC OF                            
+CH   SWITZERLAND                                       
+CI   COTE D'IVOIRE (IVORY COAST)                       
+CK   COOK ISLANDS                                      
+CL   CHILE                                             
+CM   CAMEROON                                          
+CN   CHINA                                             
+CO   COLOMBIA                                          
+CR   COSTA RICA                                        
+CS   SERBIA AND MONTENEGRO (YUGOSLAVIA)                
+CU   CUBA                                              
+CV   CAPE VERDE                                        
+CX   CHRISTMAS ISLANDS                                 
+CY   CYPRUS                                            
+CZ   CZECH REPUBLIC                                    
+DE   GERMANY                                           
+DJ   DJIBOUTI                                          
+DK   DENMARK                                           
+DM   DOMINICA                                          
+DO   DOMINICAN REPUBLIC                                
+DZ   ALGERIA                                           
+EC   ECUADOR                                           
+EE   ESTONIA                                           
+EG   EGYPT                                             
+EH   WESTERN SAHARA                                    
+ER   ERITREA                                           
+ES   SPAIN                                             
+ET   ETHIOPIA                                          
+FI   FINLAND                                           
+FJ   FIJI                                              
+FK   FALKLAND ISLANDS                                  
+FM   MICRONESIA                                        
+FO   FAROE ISLANDS                                     
+FR   FRANCE                                            
+GA   GABON                                             
+GB   GREAT BRITAIN                                     
+GD   GRENADA                                           
+GE   GEORGIA                                           
+GF   FRENCH GUIANA                                     
+GH   GHANA                                             
+GI   GIBRALTAR                                         
+GL   GREENLAND                                         
+GM   GAMBIA                                            
+GN   GUINEA                                            
+GP   GUADELOUPE                                        
+GQ   EQUATORIAL GUINEA                                 
+GR   GREECE                                            
+GS   SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS      
+GT   GUATEMALA                                         
+GU   GUAM                                              
+GW   GUINEA BISSAU                                     
+GY   GUYANA                                            
+HK   HONG KONG                                         
+HM   HEARD ISLAND AND MCDONALD ISLANDS                 
+HN   HONDURAS                                          
+HR   CROATIA                                           
+HT   HAITI                                             
+HU   HUNGARY                                           
+ID   INDONESIA                                         
+IE   IRELAND                                           
+IL   ISRAEL                                            
+IN   INDIA                                             
+IQ   IRAQ                                              
+IR   IRAN                                              
+IS   ICELAND                                           
+IT   ITALY                                             
+JM   JAMAICA                                           
+JO   JORDAN                                            
+JP   JAPAN                                             
+KE   KENYA                                             
+KG   KYRGYZSTAN                                        
+KH   CAMBODIA                                          
+KI   KIRIBATI                                          
+KM   COMOROS                                           
+KN   SAINT KITTS AND NEVIS                             
+KP   KOREA (NORTH)                                     
+KR   KOREA (SOUTH)                                     
+KW   KUWAIT                                            
+KY   CAYMAN ISLANDS                                    
+KZ   KAZAKHSTAN                                        
+LA   LAOS                                              
+LB   LEBANON                                           
+LC   SAINT LUCIA                                       
+LI   LIECHTENSTEIN                                     
+LK   SRI LANKA                                         
+LR   LIBERIA                                           
+LS   LESOTHO                                           
+LT   LITHUANIA                                         
+LU   LUXEMBOURG                                        
+LV   LATVIA                                            
+LY   LIBYA                                             
+MA   MOROCCO                                           
+MC   MONACO                                            
+MD   MOLDOVA                                           
+MG   MADAGASCAR                                        
+MH   MARSHALL ISLANDS                                  
+MK   MACEDONIA                                         
+ML   MALI                                              
+MM   MYANMAR (BURMA)                                   
+MN   MONGOLIA                                          
+MO   MACAO                                             
+MP   NORTHERN MARIANA ISLANDS                          
+MQ   MARTINIQUE                                        
+MR   MAURITANIA                                        
+MS   MONTSERRAT                                        
+MT   MALTA                                             
+MU   MAURITIUS                                         
+MV   MALDIVES                                          
+MW   MALAWI                                            
+MX   MEXICO                                            
+MY   MALAYSIA                                          
+MZ   MOZAMBIQUE                                        
+NA   NAMIBIA                                           
+NC   NEW CALEDONIA                                     
+NE   NIGER                                             
+NF   NORFOLK ISLAND                                    
+NG   NIGERIA                                           
+NI   NICARAGUA                                         
+NL   NETHERLANDS                                       
+NO   NORWAY                                            
+NONUSOut of the US                                     
+NP   NEPAL                                             
+NR   NAURU                                             
+NS   NOVA SCOTIA                                       
+NU   NIUE                                              
+NZ   NEW ZEALAND                                       
+OM   OMAN                                              
+PA   PANAMA                                            
+PE   PERU                                              
+PF   FRENCH POLYNESIA                                  
+PG   PAPUA NEW GUINEA                                  
+PH   PHILIPPINES                                       
+PK   PAKISTAN                                          
+PL   POLAND                                            
+PM   SAINT PIERRE AND MIQUELON                         
+PN   PITCAIRN ISLAND                                   
+PR   PUERTO RICO                                       
+PS   PALESTINIAN TERRITORIES                           
+PT   PORTUGAL                                          
+PW   PALAU                                             
+PY   PARAGUAY                                          
+QA   QATAR                                             
+RE   REUNION                                           
+RO   ROMANIA                                           
+RU   RUSSIAN FEDERATION  (RUSSIA)                      
+RW   RWANDA                                            
+SA   SAUDI ARABIA                                      
+SB   SOLOMON ISLANDS                                   
+SC   SEYCHELLES                                        
+SD   SUDAN                                             
+SE   SWEDEN                                            
+SG   SINGAPORE                                         
+SH   SAINT HELENA                                      
+SI   SLOVENIA                                          
+SJ   SVALBARD AND JAN MAYEN                            
+SK   SLOVAKIA                                          
+SL   SIERRA LEONE                                      
+SM   SAN MARINO                                        
+SN   SENEGAL                                           
+SO   SOMALIA                                           
+SR   SURINAME                                          
+ST   SAO TOME AND PRINCIPE                             
+SV   EL SALVADOR                                       
+SY   SYRIAN ARAB REPUBLIC (SYRIA)                      
+SZ   SWAZILAND                                         
+TC   CHAD                                              
+TCA  TURKS AND CAICOS ISLANDS                          
+TF   FRENCH SOUTHERN TERRITORIES                       
+TG   TOGO                                              
+TH   THAILAND                                          
+TJ   TAJIKISTAN                                        
+TK   TOKELAU                                           
+TL   TIMOR-LESTE                                       
+TM   TURKMENISTAN                                      
+TN   TUNISIA                                           
+TO   TONGA                                             
+TR   TURKEY                                            
+TT   TRINIDAD AND TOBAGO                               
+TV   TUVALU                                            
+TW   TAIWAN                                            
+TZ   TANZANIA                                          
+UA   UKRAINE                                           
+UG   UGANDA                                            
+UK   UNITED KINGDOM                                    
+UK_E ENGLAND                                           
+UK_S SCOTLAND                                          
+UK_W WALES                                             
+UM   UNITED STATES MINOR OUTLYING ISLANDS              
+US   UNITED STATES                                     
+UY   URUGUAY                                           
+UZ   UZBEKISTAN                                        
+VA   VATICAN CITY                                      
+VC   SAINT VINCENT AND THE GRENADINES                  
+VE   VENEZUELA                                         
+VG   VIRGIN ISLANDS, BRITISH                           
+VI   VIRGIN ISLANDS, UNTIED STATES                     
+VN   VIETNAM                                           
+VU   VANUATU                                           
+WF   WALLIS AND FUTUNA                                 
+WS   SAMOA                                             
+YE   YEMEN                                             
+YT   MAYOTTE                                           
+ZA   SOUTH AFRICA                                      
+ZM   ZAMBIA                                            
+ZW   ZIMBABWE                                          
