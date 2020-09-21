@@ -58,18 +58,10 @@ class CreatePropEnts < ActiveRecord::Migration[6.0]
       t.integer :timber_use_ex
       t.integer :timber_market_ne
       t.integer :timber_market_ex
-      t.string :new
-      t.string :val
-      t.integer :hs
-      t.string :new
-      t.string :val
-      t.integer :nhs
-      t.string :new
-      t.string :val
-      t.integer :p
-      t.string :new
-      t.string :val
-      t.integer :taxable
+      t.integer :new_val_hs
+      t.integer :new_val_nhs
+      t.integer :new_val_p
+      t.integer :new_val_taxable
       t.integer :dataset_id
       t.integer :chodo_amt
       t.integer :ent_pct_land_hs

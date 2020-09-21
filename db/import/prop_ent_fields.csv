@@ -59,10 +59,10 @@ timber_use_ne,numeric(15),789,803,15,Timber use non-exempt
 timber_use_ex,numeric(15),804,818,15,Timber use exempt
 timber_market_ne,numeric(15),819,833,15,Timber market non-exempt
 timber_market_ex,numeric(15),834,848,15,Timber market exempt
-new val hs,numeric(15),849,863,15,New Homesite Value
-new val nhs,numeric(15),864,878,15,New Non-Homesite Value
-new val p,numeric(15),879,893,15,New Personal Value
-new val taxable,numeric(15),894,908,15,New Taxable Value
+new_val_hs,numeric(15),849,863,15,New Homesite Value
+new_val_nhs,numeric(15),864,878,15,New Non-Homesite Value
+new_val_p,numeric(15),879,893,15,New Personal Value
+new_val_taxable,numeric(15),894,908,15,New Taxable Value
 dataset_id,numeric(15),909,923,15,Unique number that identifies this export
 chodo_amt,numeric(15),924,938,15,CHODO Exemption Amount Granted by Entity
 ent_pct_land_hs,numeric(15),939,953,15,Land Homesite Entity Percentage

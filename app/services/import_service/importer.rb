@@ -7,7 +7,7 @@ module ImportService
     def initialize(record_type)
       @file = File.open(Rails.configuration.import_files_path.join("#{record_type.upcase}.TXT"), 'r')
       @fields = FieldsParser.new(record_type).call
-      @record_class = record_type.upcase.constantize
+      @record_class = record_type.camelize.constantize
     end
 
     def call
@@ -36,7 +36,13 @@ module ImportService
     def field_value_from_line(field, line)
       field_value = line.slice(field.start_idx, field.length).strip
 
-      field.date_field? ? Date.strptime(field_value, '%m%d%Y') : field_value
+      field.date_field? ? date_field_value(field_value) : field_value
+    end
+
+    def date_field_value(field_value)
+      Date.parse(field_value)
+    rescue Date::Error
+      Date.strptime(field_value, '%m%d%Y')
     end
 
     def import_records(records)

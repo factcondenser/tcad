@@ -7,11 +7,16 @@ namespace :db do
 
     record_type = args[:record_type]
 
-    # unless File.exist?(Rails.root.join('app', 'models', "#{record_type}.rb"))
-      system(ImportService::MigrationStringBuilder.new(record_type).call)
-      system('rails db:migrate')
-    # end
+    unless File.exist?(Rails.root.join('app', 'models', "#{record_type}.rb"))
+      migration_string = ImportService::MigrationStringBuilder.new(record_type).call
 
-    # Services::Importer.new(args[:record_type]).call
+      puts "[#{task.name}] executing `#{migration_string}`".yellow
+      system(migration_string)
+
+      puts "[#{task.name}] executing `rails db:migrate`".yellow
+      system('rails db:migrate')
+    end
+
+    ImportService::Importer.new(record_type).call
   end
 end

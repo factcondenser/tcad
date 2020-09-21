@@ -43,8 +43,8 @@ module Tcad
       land_det
       lawsuit
       prop_ent
-      prop
       state_cd
     ]
+    # prop
   end
 end
