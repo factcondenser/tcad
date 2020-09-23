@@ -48,7 +48,7 @@ freeze_transfer_flag,char(1),634,634,1,Freeze Transfer Flag
 freeze_transfer_date,char(25),635,659,25,Freeze Transfer Date
 freeze_previous_tax,numeric(15),660,674,15,Freeze Previous Tax
 freeze_previous_tax_unfrozen,numeric(15),675,689,15,Freeze Previous Tax Unfrozen
-freeze_transfer_percentage,numeric(9),690,698,9,Freeze Transfer Percentage
+freeze_transfer_percentage,"numeric(9,6)",690,698,9,Freeze Transfer Percentage
 lve_amt,numeric(15),699,713,15,Leased vehicle exemption amount
 eco_amt,numeric(15),714,728,15,ECO exemption amount
 ag_use_val_ne,numeric(15),729,743,15,Ag use val non-exempt
@@ -82,7 +82,7 @@ dvhs_amt,numeric(15),1134,1148,15,Disabled Veteran Homestead Amount granted by e
 tax_increment_flag,char(1),1149,1149,1,Tax Increment Flag ('T' or 'F')
 tax_increment_imprv_val,numeric(15),1150,1164,15,Tax Increment Improvement Value
 tax_increment_land_val,numeric(15),1165,1179,15,Tax Increment Land Value
-weed_taxable_acres,numeric(15),1180,1194,15,Weed Taxable Acres (4 Decimal Places)
+weed_taxable_acres,"numeric(15,4)",1180,1194,15,Weed Taxable Acres (4 Decimal Places)
 hs_allocation_factor,numeric(15),1195,1209,15,Allocation Factor for HS exemption
 ov65_allocation_factor,numeric(15),1210,1224,15,Allocation Factor for OV65 exemption
 ov65s_allocation_factor,numeric(15),1225,1239,15,Allocation Factor for OV65S exemption
@@ -121,7 +121,7 @@ clt_amt,numeric(15),1715,1729,15,Community Land Trust Amount granted by entity
 clt_allocation_factor,numeric(15),1730,1744,15,Allocation Factor for CLT exemption
 dvhss_amt,numeric(15),1745,1759,15,DVHS Surviving Spouse Amount granted by entity
 dvhss_allocation_factor,numeric(15),1760,1774,15,Allocation Factor for DVHS Surviving Spouse  exemption
-homestead_group_exemption_factor,numeric(15),1775,1789,15,Homestead Group Exemption Factor (10 decimals)
+homestead_group_exemption_factor,"numeric(15,10)",1775,1789,15,Homestead Group Exemption Factor (10 decimals)
 ex_xd_amt,numeric(15),1790,1804,15,EX-XD 11.181 Exemption Amount granted by entity
 ex_xd_allocation_factor,numeric(15),1805,1819,15,EX-XD 11.181 exemption Allocation Factor
 ex_xf_amt,numeric(15),1820,1834,15,EX-XF 11.183 Exemption Amount granted by entity

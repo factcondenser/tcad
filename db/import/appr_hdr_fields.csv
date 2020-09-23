@@ -1,10 +1,10 @@
 Field Name,Datatype,Start,End,Length,Description
 run_date,char(16),1,16,16,Run Date and Time
-file_escription,char(40),17,56,40,Description of this file
+file_description,char(40),17,56,40,Description of this file
 appraisal_year,numeric(4),57,60,4,Appraisal or Tax Year
 supplement_number,numeric(4),61,64,4,Supplement Number
 entity_code,char(10),65,74,10,"Entity Code or ""MULT"" if multiple entities"
-entity_escription,char(40),75,114,40,Entity Description or list of entities
+entity_description,char(40),75,114,40,Entity Description or list of entities
 office_name,char(30),115,144,30,Office name generating file
 operator,char(20),145,164,20,Operator generating file
 pacs_version,char(10),165,174,10,PACS version number

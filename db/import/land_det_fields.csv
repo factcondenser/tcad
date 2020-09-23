@@ -6,7 +6,7 @@ land_type_cd,varchar(10),29,38,10,Land Type Code
 land_type_desc,varchar(25),39,63,25,Land Type Description
 state_cd,varchar(5),64,68,5,State Code
 land_seg_homesite,varchar(1),69,69,1,"""T"" indicates Homesite improvement, ""F"" non Homesite"
-size_acres,numeric(14),70,83,14,Size Acres ( 4 Decimals )
+size_acres,"numeric(14,4)",70,83,14,Size Acres ( 4 Decimals )
 size_square_feet,numeric(14),84,97,14,Size Square Feet
 effective_front,numeric(14),98,111,14,Effective Front
 effective_depth,numeric(14),112,125,14,Effective Depth

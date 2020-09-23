@@ -11,7 +11,7 @@ class CreateProps < ActiveRecord::Migration[6.0]
       t.string :geo_id, limit: 50
       t.integer :py_owner_id
       t.string :py_owner_name, limit: 70
-      t.string :partial_owner, limit: 1
+      t.boolean :partial_owner, null: false, default: false
       t.integer :udi_group
       t.string :py_addr_line1, limit: 60
       t.string :py_addr_line2, limit: 60
@@ -22,9 +22,9 @@ class CreateProps < ActiveRecord::Migration[6.0]
       t.string :py_addr_zip, limit: 5
       t.string :py_addr_zip_cass, limit: 4
       t.string :py_addr_zip_rt, limit: 2
-      t.string :py_confidential_flag, limit: 1
-      t.string :py_address_suppress_flag, limit: 1
-      t.string :py_addr_ml_deliverable, limit: 1
+      t.boolean :py_confidential_flag, null: false, default: false
+      t.boolean :py_address_suppress_flag, null: false, default: false
+      t.boolean :py_addr_ml_deliverable, null: false, default: false
       t.string :situs_street_prefx, limit: 10
       t.string :situs_street, limit: 50
       t.string :situs_street_suffix, limit: 10
@@ -32,7 +32,7 @@ class CreateProps < ActiveRecord::Migration[6.0]
       t.string :situs_zip, limit: 10
       t.string :legal_desc, limit: 255
       t.string :legal_desc2, limit: 255
-      t.integer :legal_acreage
+      t.decimal :legal_acreage, precision: 16, scale: 4
       t.string :abs_subdv_cd, limit: 10
       t.string :hood_cd, limit: 10
       t.string :block, limit: 50
@@ -48,7 +48,7 @@ class CreateProps < ActiveRecord::Migration[6.0]
       t.integer :appraised_val
       t.integer :ten_percent_cap
       t.integer :assessed_val
-      t.string :arb_protest_flag, limit: 1
+      t.boolean :arb_protest_flag, null: false, default: false
       t.string :deed_book_id, limit: 20
       t.string :deed_book_page, limit: 20
       t.string :deed_dt, limit: 25
@@ -66,36 +66,36 @@ class CreateProps < ActiveRecord::Migration[6.0]
       t.string :jan1_addr_zip, limit: 5
       t.string :jan1_addr_zip_cass, limit: 4
       t.string :jan1_addr_zip_rt, limit: 2
-      t.string :jan1_confidential_flag, limit: 1
-      t.string :jan1_address_suppress_flag, limit: 1
-      t.string :jan1_ml_deliverable, limit: 1
-      t.string :hs_exempt, limit: 1
-      t.string :ov65_exempt, limit: 1
+      t.boolean :jan1_confidential_flag, null: false, default: false
+      t.boolean :jan1_address_suppress_flag, null: false, default: false
+      t.boolean :jan1_ml_deliverable, null: false, default: false
+      t.boolean :hs_exempt, null: false, default: false
+      t.boolean :ov65_exempt, null: false, default: false
       t.string :ov65_prorate_begin, limit: 25
       t.string :ov65_prorate_end, limit: 25
-      t.string :ov65s_exempt, limit: 1
-      t.string :dp_exempt, limit: 1
-      t.string :dv1_exempt, limit: 1
-      t.string :dv1s_exempt, limit: 1
-      t.string :dv2_exempt, limit: 1
-      t.string :dv2s_exempt, limit: 1
-      t.string :dv3_exempt, limit: 1
-      t.string :dv3s_exempt, limit: 1
-      t.string :dv4_exempt, limit: 1
-      t.string :dv4s_exempt, limit: 1
-      t.string :ex_exempt, limit: 1
+      t.boolean :ov65s_exempt, null: false, default: false
+      t.boolean :dp_exempt, null: false, default: false
+      t.boolean :dv1_exempt, null: false, default: false
+      t.boolean :dv1s_exempt, null: false, default: false
+      t.boolean :dv2_exempt, null: false, default: false
+      t.boolean :dv2s_exempt, null: false, default: false
+      t.boolean :dv3_exempt, null: false, default: false
+      t.boolean :dv3s_exempt, null: false, default: false
+      t.boolean :dv4_exempt, null: false, default: false
+      t.boolean :dv4s_exempt, null: false, default: false
+      t.boolean :ex_exempt, null: false, default: false
       t.string :ex_prorate_begin, limit: 25
       t.string :ex_prorate_end, limit: 25
-      t.string :lve_exempt, limit: 1
-      t.string :ab_exempt, limit: 1
-      t.string :en_exempt, limit: 1
-      t.string :fr_exempt, limit: 1
-      t.string :ht_exempt, limit: 1
-      t.string :pro_exempt, limit: 1
-      t.string :pc_exempt, limit: 1
-      t.string :so_exempt, limit: 1
-      t.string :ex366_exempt, limit: 1
-      t.string :ch_exempt, limit: 1
+      t.boolean :lve_exempt, null: false, default: false
+      t.boolean :ab_exempt, null: false, default: false
+      t.boolean :en_exempt, null: false, default: false
+      t.boolean :fr_exempt, null: false, default: false
+      t.boolean :ht_exempt, null: false, default: false
+      t.boolean :pro_exempt, null: false, default: false
+      t.boolean :pc_exempt, null: false, default: false
+      t.boolean :so_exempt, null: false, default: false
+      t.boolean :ex366_exempt, null: false, default: false
+      t.boolean :ch_exempt, null: false, default: false
       t.string :imprv_state_cd, limit: 10
       t.string :land_state_cd, limit: 10
       t.string :personal_state_cd, limit: 10
@@ -135,7 +135,7 @@ class CreateProps < ActiveRecord::Migration[6.0]
       t.string :arb_agent_zip_cass, limit: 4
       t.string :arb_agent_zip_rt, limit: 2
       t.string :mineral_type_of_int, limit: 5
-      t.string :mineral_int_pct, limit: 15
+      t.decimal :mineral_int_pct, precision: 15, scale: 10
       t.string :productivity_use_code, limit: 3
       t.integer :timber_78_market
       t.integer :ag_late_loss
@@ -159,40 +159,40 @@ class CreateProps < ActiveRecord::Migration[6.0]
       t.string :appr_addr_zip, limit: 5
       t.string :appr_addr_zip_cass, limit: 4
       t.string :appr_addr_zip_cass_route, limit: 2
-      t.string :appr_ml_deliverable, limit: 1
-      t.string :appr_confidential_flag, limit: 1
-      t.string :appr_address_suppress_flag, limit: 1
+      t.boolean :appr_ml_deliverable, null: false, default: false
+      t.boolean :appr_confidential_flag, null: false, default: false
+      t.boolean :appr_address_suppress_flag, null: false, default: false
       t.string :appr_confidential_name, limit: 70
       t.string :py_confidential_name, limit: 70
       t.string :jan1_confidential_name, limit: 70
-      t.string :rendition_filed, limit: 1
+      t.boolean :rendition_filed, null: false, default: false
       t.date :rendition_date
       t.integer :rendition_penalty
       t.date :rendition_penalty_date_paid
       t.integer :rendition_fraud_penalty
       t.date :rendition_fraud_penalty_date_paid
       t.string :entities, limit: 140
-      t.string :eco_exempt, limit: 1
+      t.boolean :eco_exempt, null: false, default: false
       t.integer :dataset_id
       t.string :deed_num, limit: 50
-      t.string :chodo_exempt, limit: 1
-      t.string :local_option_pct_only_flag_hs, limit: 1
-      t.string :local_option_pct_only_flag_ov65, limit: 1
-      t.string :local_option_pct_only_flag_ov65s, limit: 1
-      t.string :local_option_pct_only_flag_dp, limit: 1
-      t.string :freeze_only_flag_ov65, limit: 1
-      t.string :freeze_only_flag_ov65s, limit: 1
-      t.string :freeze_only_flag_dp, limit: 1
-      t.string :apply_percent_exemption_flag, limit: 1
-      t.integer :exemption_percentage
-      t.string :vit_flag, limit: 1
-      t.string :lih_exempt, limit: 1
-      t.string :git_exempt, limit: 1
-      t.string :dps_exempt, limit: 1
+      t.boolean :chodo_exempt, null: false, default: false
+      t.boolean :local_option_pct_only_flag_hs, null: false, default: false
+      t.boolean :local_option_pct_only_flag_ov65, null: false, default: false
+      t.boolean :local_option_pct_only_flag_ov65s, null: false, default: false
+      t.boolean :local_option_pct_only_flag_dp, null: false, default: false
+      t.boolean :freeze_only_flag_ov65, null: false, default: false
+      t.boolean :freeze_only_flag_ov65s, null: false, default: false
+      t.boolean :freeze_only_flag_dp, null: false, default: false
+      t.boolean :apply_percent_exemption_flag, null: false, default: false
+      t.string :exemption_percentage, limit: 15
+      t.boolean :vit_flag, null: false, default: false
+      t.boolean :lih_exempt, null: false, default: false
+      t.boolean :git_exempt, null: false, default: false
+      t.boolean :dps_exempt, null: false, default: false
       t.date :dps_deferral_date
-      t.string :local_option_pct_only_flag_dps, limit: 1
-      t.string :freeze_only_flag_dps, limit: 1
-      t.string :dvhs_exempt, limit: 1
+      t.boolean :local_option_pct_only_flag_dps, null: false, default: false
+      t.boolean :freeze_only_flag_dps, null: false, default: false
+      t.boolean :dvhs_exempt, null: false, default: false
       t.integer :hs_qualify_yr
       t.integer :ov65_qualify_yr
       t.integer :ov65s_qualify_yr
@@ -230,9 +230,9 @@ class CreateProps < ActiveRecord::Migration[6.0]
       t.string :mortgage_addr_zip, limit: 5
       t.string :mortgage_addr_zip_cass, limit: 4
       t.string :mortgage_addr_zip_rt, limit: 2
-      t.string :mortgage_addr_ml_deliverable, limit: 1
+      t.boolean :mortgage_addr_ml_deliverable, null: false, default: false
       t.string :sic_code, limit: 10
-      t.string :omitted_property_flag, limit: 1
+      t.boolean :omitted_property_flag, null: false, default: false
       t.string :hs_prorate_begin, limit: 25
       t.string :hs_prorate_end, limit: 25
       t.string :ov65s_prorate_begin, limit: 25
@@ -285,11 +285,11 @@ class CreateProps < ActiveRecord::Migration[6.0]
       t.string :lih_prorate_end, limit: 25
       t.string :git_prorate_begin, limit: 25
       t.string :git_prorate_end, limit: 25
-      t.string :clt_exempt, limit: 1
+      t.boolean :clt_exempt, null: false, default: false
       t.string :clt_prorate_begin, limit: 25
       t.string :clt_prorate_end, limit: 25
       t.integer :clt_qualify_yr
-      t.string :dvhss_exempt, limit: 1
+      t.boolean :dvhss_exempt, null: false, default: false
       t.string :dvhss_prorate_begin, limit: 25
       t.string :dvhss_prorate_end, limit: 25
       t.integer :dvhss_qualify_yr
@@ -297,103 +297,103 @@ class CreateProps < ActiveRecord::Migration[6.0]
       t.integer :omitted_imprv_non_hstd_val
       t.string :dvhs_prorate_begin, limit: 25
       t.string :dvhs_prorate_end, limit: 25
-      t.string :ex_xd_exempt, limit: 1
+      t.boolean :ex_xd_exempt, null: false, default: false
       t.integer :ex_xd_qualify_yr
       t.string :ex_xd_prorate_begin, limit: 25
       t.string :ex_xd_prorate_end, limit: 25
-      t.string :ex_xf_exempt, limit: 1
+      t.boolean :ex_xf_exempt, null: false, default: false
       t.integer :ex_xf_qualify_yr
       t.string :ex_xf_prorate_begin, limit: 25
       t.string :ex_xf_prorate_end, limit: 25
-      t.string :ex_xg_exempt, limit: 1
+      t.boolean :ex_xg_exempt, null: false, default: false
       t.integer :ex_xg_qualify_yr
       t.string :ex_xg_prorate_begin, limit: 25
       t.string :ex_xg_prorate_end, limit: 25
-      t.string :ex_xh_exempt, limit: 1
+      t.boolean :ex_xh_exempt, null: false, default: false
       t.integer :ex_xh_qualify_yr
       t.string :ex_xh_prorate_begin, limit: 25
       t.string :ex_xh_prorate_end, limit: 25
-      t.string :ex_xi_exempt, limit: 1
+      t.boolean :ex_xi_exempt, null: false, default: false
       t.integer :ex_xi_qualify_yr
       t.string :ex_xi_prorate_begin, limit: 25
       t.string :ex_xi_prorate_end, limit: 25
-      t.string :ex_xj_exempt, limit: 1
+      t.boolean :ex_xj_exempt, null: false, default: false
       t.integer :ex_xj_qualify_yr
       t.string :ex_xj_prorate_begin, limit: 25
       t.string :ex_xj_prorate_end, limit: 25
-      t.string :ex_xl_exempt, limit: 1
+      t.boolean :ex_xl_exempt, null: false, default: false
       t.integer :ex_xl_qualify_yr
       t.string :ex_xl_prorate_begin, limit: 25
       t.string :ex_xl_prorate_end, limit: 25
-      t.string :ex_xm_exempt, limit: 1
+      t.boolean :ex_xm_exempt, null: false, default: false
       t.integer :ex_xm_qualify_yr
       t.string :ex_xm_prorate_begin, limit: 25
       t.string :ex_xm_prorate_end, limit: 25
-      t.string :ex_xn_exempt, limit: 1
+      t.boolean :ex_xn_exempt, null: false, default: false
       t.integer :ex_xn_qualify_yr
       t.string :ex_xn_prorate_begin, limit: 25
       t.string :ex_xn_prorate_end, limit: 25
-      t.string :ex_xo_exempt, limit: 1
+      t.boolean :ex_xo_exempt, null: false, default: false
       t.integer :ex_xo_qualify_yr
       t.string :ex_xo_prorate_begin, limit: 25
       t.string :ex_xo_prorate_end, limit: 25
-      t.string :ex_xp_exempt, limit: 1
+      t.boolean :ex_xp_exempt, null: false, default: false
       t.integer :ex_xp_qualify_yr
       t.string :ex_xp_prorate_begin, limit: 25
       t.string :ex_xp_prorate_end, limit: 25
-      t.string :ex_xq_exempt, limit: 1
+      t.boolean :ex_xq_exempt, null: false, default: false
       t.integer :ex_xq_qualify_yr
       t.string :ex_xq_prorate_begin, limit: 25
       t.string :ex_xq_prorate_end, limit: 25
-      t.string :ex_xr_exempt, limit: 1
+      t.boolean :ex_xr_exempt, null: false, default: false
       t.integer :ex_xr_qualify_yr
       t.string :ex_xr_prorate_begin, limit: 25
       t.string :ex_xr_prorate_end, limit: 25
-      t.string :ex_xs_exempt, limit: 1
+      t.boolean :ex_xs_exempt, null: false, default: false
       t.integer :ex_xs_qualify_yr
       t.string :ex_xs_prorate_begin, limit: 25
       t.string :ex_xs_prorate_end, limit: 25
-      t.string :ex_xt_exempt, limit: 1
+      t.boolean :ex_xt_exempt, null: false, default: false
       t.integer :ex_xt_qualify_yr
       t.string :ex_xt_prorate_begin, limit: 25
       t.string :ex_xt_prorate_end, limit: 25
-      t.string :ex_xu_exempt, limit: 1
+      t.boolean :ex_xu_exempt, null: false, default: false
       t.integer :ex_xu_qualify_yr
       t.string :ex_xu_prorate_begin, limit: 25
       t.string :ex_xu_prorate_end, limit: 25
-      t.string :ex_xv_exempt, limit: 1
+      t.boolean :ex_xv_exempt, null: false, default: false
       t.integer :ex_xv_qualify_yr
       t.string :ex_xv_prorate_begin, limit: 25
       t.string :ex_xv_prorate_end, limit: 25
-      t.string :ex_xa_exempt, limit: 1
+      t.boolean :ex_xa_exempt, null: false, default: false
       t.integer :ex_xa_qualify_yr
       t.string :ex_xa_prorate_begin, limit: 25
       t.string :ex_xa_prorate_end, limit: 25
       t.integer :lve_qualify_yr
-      t.string :ppv_exempt, limit: 1
+      t.boolean :ppv_exempt, null: false, default: false
       t.integer :ppv_qualify_yr
       t.string :ppv_prorate_begin, limit: 25
       t.string :ppv_prorate_end, limit: 25
-      t.string :dvch_exempt, limit: 1
+      t.boolean :dvch_exempt, null: false, default: false
       t.integer :dvch_qualify_yr
       t.string :dvch_prorate_begin, limit: 25
       t.string :dvch_prorate_end, limit: 25
-      t.string :dvchs_exempt, limit: 1
+      t.boolean :dvchs_exempt, null: false, default: false
       t.integer :dvchs_qualify_yr
       t.string :dvchs_prorate_begin, limit: 25
       t.string :dvchs_prorate_end, limit: 25
-      t.string :masss_exempt, limit: 1
+      t.boolean :masss_exempt, null: false, default: false
       t.integer :masss_qualify_yr
       t.string :masss_prorate_begin, limit: 25
       t.string :masss_prorate_end, limit: 25
       t.integer :pp_late_interstate_allocation_val
       t.integer :appraised_val_reflecting_productivity_loss
       t.integer :assessed_val_reflecting_productivity_loss
-      t.string :frss_exempt, limit: 1
+      t.boolean :frss_exempt, null: false, default: false
       t.integer :frss_qualify_yr
       t.string :frss_prorate_begin, limit: 25
       t.string :frss_prorate_end, limit: 25
-      t.string :abmno_exempt, limit: 1
+      t.boolean :abmno_exempt, null: false, default: false
       t.integer :abmno_qualify_yr
       t.string :abmno_prorate_begin, limit: 25
       t.string :abmno_prorate_end, limit: 25
@@ -405,7 +405,7 @@ class CreateProps < ActiveRecord::Migration[6.0]
       t.date :dv2s_deferral_date
       t.date :dv3s_deferral_date
       t.date :dv4s_deferral_date
-      t.string :dis_exempt, limit: 1
+      t.boolean :dis_exempt, null: false, default: false
       t.integer :dis_qualify_yr
       t.string :dis_prorate_begin, limit: 25
       t.string :dis_prorate_end, limit: 25

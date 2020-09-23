@@ -31,6 +31,7 @@ module Tcad
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.import_files_path = Rails.root.join('db', 'import')
+
     config.record_types = %w[
       abs_subd
       appr_hdr
@@ -42,9 +43,9 @@ module Tcad
       imp_info
       land_det
       lawsuit
+      prop
       prop_ent
       state_cd
     ]
-    # prop
   end
 end

@@ -31,7 +31,7 @@ py_addr_zip,char(5),979,983,5,Property Year Owner Address Zip (Zip Only)
 py_addr_zip_cass,char(4),984,987,4,Property Year Owner Address Zip Cass (Cass Only)
 py_addr_zip_rt,char(2),988,989,2,Property Year Owner Address Zip Route (Route Only)
 py_confidential_flag,char(1),990,990,1,Property Year Owner Confidential Flag ('T' or 'F')
-py_address_suppress_flag,char(1),991,991,1,"Property Year Owner 
+py_address_suppress_flag,char(1),991,991,1,"Property Year Owner
 Address Suppression Flag ('T' or 'F')"
 filler,char(20),992,1011,20,Not In Use
 py_addr_ml_deliverable,char(1),1012,1012,1,"Property Year Owner Address
@@ -45,7 +45,7 @@ situs_city,char(30),1110,1139,30,Situs/Location City
 situs_zip,char(10),1140,1149,10,Situs/Location Zip
 legal_desc,char(255),1150,1404,255,Legal Description
 legal_desc2,char(255),1405,1659,255,Additional Legal Description
-legal_acreage,numeric(16),1660,1675,16,Legal Acreage (4 Decimals)
+legal_acreage,"numeric(16,4)",1660,1675,16,Legal Acreage (4 Decimals)
 abs_subdv_cd,char(10),1676,1685,10,Abstract/Subdivision code
 hood_cd,char(10),1686,1695,10,Neighborhood code
 block,char(50),1696,1745,50,Block
@@ -82,7 +82,7 @@ jan1_addr_zip,char(5),2558,2562,5,January 1 Address Zip  (Zip Only)
 jan1_addr_zip_cass,char(4),2563,2566,4,January 1 Address Zip Cass (Cass Only)
 jan1_addr_zip_rt,char(2),2567,2568,2,January 1 Address Zip  Route (Route Only)
 jan1_confidential_flag,char(1),2569,2569,1,January 1 Owner Confidential Flag ('T' or 'F')
-jan1_address_suppress_flag,char(1),2570,2570,1,"January 1 Owner 
+jan1_address_suppress_flag,char(1),2570,2570,1,"January 1 Owner
 Address Suppression Flag ('T' or 'F')"
 filler,char(37),2571,2607,37,Not In Use
 jan1_ml_deliverable,char(1),2608,2608,1,"January 1 Owner Address
@@ -161,7 +161,7 @@ arb_agent_zip_cass,char(4),3988,3991,4,ARB Agent Zip Cass (Cass Only)
 arb_agent_zip_rt,char(2),3992,3993,2,ARB Agent Zip Route (Route Only)
 filler,char(34),3994,4027,34,filler
 mineral_type_of_int,char(5),4028,4032,5,Mineral Interest Type
-mineral_int_pct,char(15),4033,4047,15,Mineral Interest Percent (10 Decimals)
+mineral_int_pct,"numeric(15,10)",4033,4047,15,Mineral Interest Percent (10 Decimals)
 productivity_use_code,char(3),4048,4050,3,Productivity Use Code
 filler,char(40),4051,4090,40,filler
 timber_78_market,int(12),4091,4102,12,1978 timber market value
@@ -201,7 +201,7 @@ Y = deliverable address
 N = undeliverable address"
 appr_confidential_flag,char(1),4859,4859,1,"Current Appraisal Owner
 Confidential Flag ('T' or 'F')"
-appr_address_suppress_flag,char(1),4860,4860,1,"Current Appraisal Owner 
+appr_address_suppress_flag,char(1),4860,4860,1,"Current Appraisal Owner
 Address Suppression Flag ('T' or 'F')"
 appr_confidential_name,char(70),4861,4930,70,Current Appraisal Owner Confidential Name
 py_confidential_name,char(70),4931,5000,70,Property Year Owner Confidential Name
@@ -227,7 +227,7 @@ freeze_only_flag_ov65,char(1),5413,5413,1,Freeze only flag for OV65 exemption ('
 freeze_only_flag_ov65s,char(1),5414,5414,1,Freeze only flag for OV65S exemption ('T' or 'F')
 freeze_only_flag_dp,char(1),5415,5415,1,Freeze only flag for DP exemption ('T' or 'F')
 apply_percent_exemption_flag,char(1),5416,5416,1,Apply percent exemption flag ('T' or 'F')
-exemption_percentage,numeric(15),5417,5431,15,Exemption percentage (string representing a floating point number)
+exemption_percentage,char(15),5417,5431,15,Exemption percentage (string representing a floating point number)
 vit_flag,char(1),5432,5432,1,"VIT flag; 'T' if property is VIT, otherwise 'F'"
 lih_exempt,char(1),5433,5433,1,Exemption for charitable organizations providing low-income housing with volunteer labor ('T' or 'F')
 git_exempt,char(1),5434,5434,1,Goods in Transit Exemption (‘T’ or ‘F’)

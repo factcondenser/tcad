@@ -7,10 +7,10 @@ class CreateImpInfos < ActiveRecord::Migration[6.0]
       t.string :imprv_type_cd, limit: 10
       t.string :imprv_type_desc, limit: 25
       t.string :imprv_state_cd, limit: 5
-      t.string :imprv_homesite, limit: 1
+      t.boolean :imprv_homesite, null: false, default: false
       t.integer :imprv_val
-      t.integer :imprv_homesite_pct
-      t.string :omitted, limit: 1
+      t.decimal :imprv_homesite_pct, precision: 15, scale: 10
+      t.boolean :omitted, null: false, default: false
       t.integer :omitted_imprv_val
 
       t.timestamps
