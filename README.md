@@ -1,24 +1,15 @@
-# README
+# Travis Central Appraisal District Data
+This is a Rails app that takes the data provided on the [Travis Central Appraisal District website](https://www.traviscad.org/reports-request/) and imports it into a Postgres database.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Get the SQL dump [here](https://www.dropbox.com/s/xnncj7hz2ex10bs/tcad_2019.zip?dl=0).
 
-Things you may want to cover:
+## Run the app locally
+```bash
+~$ git clone https://github.com/factcondenser/tcad.git
 
-* Ruby version
+~$ cd tcad
 
-* System dependencies
+~/tcad$ bundle install
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+~/tcad$ rails s
+```
