@@ -15,7 +15,7 @@ module ImportService
 
       file.lazy.each_slice(BATCH_SIZE) do |lines|
         records = records_from_lines(lines, batch_count += 1, line_count)
-        # import_records(records)
+        import_records(records)
 
         line_count += lines.count
       end
