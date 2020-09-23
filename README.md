@@ -6,7 +6,7 @@ Get the SQL dump [here](https://www.dropbox.com/s/xnncj7hz2ex10bs/tcad_2019.zip?
 ## Modifications made to the layout information
 - Changed `Field Name` from Title Case to snake_case for all `appr_hdrs` fields
 - Changed `Datatype` from "varcahr(10)" to "varchar(10)" for `land_dets.land_type_cd`
-- Changed `Datatype` from "numeric(15)" to "char(15)" for `props.exemption_percentage` because it's `Description` says it's a "string representing a floating point number"
+- Changed `Datatype` from "numeric(15)" to "char(15)" for `props.exemption_percentage` because its `Description` says it's a "string representing a floating point number"
 - Imported numerics as decimals instead of integers in cases where:
   - `Datatype` includes both precision and scale
   - `Description` say it's a decimal
