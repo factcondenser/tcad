@@ -12,7 +12,7 @@ Get the SQL dump [here](https://www.dropbox.com/s/xnncj7hz2ex10bs/tcad_2019.zip?
   - `Description` say it's a decimal
   - `Field Name` ends in `_factor`
   - `Field Name` ends in `_pct` or includes `_pct_`
-  
+
 ## Run it locally
 ```bash
 # clone the repo and cd into it
@@ -20,6 +20,7 @@ Get the SQL dump [here](https://www.dropbox.com/s/xnncj7hz2ex10bs/tcad_2019.zip?
 
 # install dependencies
 ~/tcad$ bundle install
+~/tcad$ yarn install
 
 # create a local db and run migrations
 ~/tcad$ rails db:create; rails db:migrate

@@ -10,733 +10,733 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_22_193154) do
+ActiveRecord::Schema.define(version: 2020_09_24_033113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "abs_subds", force: :cascade do |t|
-    t.string "abs_subdv_cd", limit: 10
-    t.string "abs_subdv_desc", limit: 40
+    t.string "abs_subdv_cd", limit: 10, comment: "Abstract/Subdivision code"
+    t.string "abs_subdv_desc", limit: 40, comment: "Abstract/Subdivision code description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "appr_hdrs", force: :cascade do |t|
-    t.date "run_date"
-    t.string "file_description", limit: 40
-    t.integer "appraisal_year"
-    t.integer "supplement_number"
-    t.string "entity_code", limit: 10
-    t.string "entity_description", limit: 40
-    t.string "office_name", limit: 30
-    t.string "operator", limit: 20
-    t.string "pacs_version", limit: 10
-    t.string "export_version", limit: 10
-    t.string "value_option", limit: 10
-    t.string "office_use_only", limit: 50
+    t.date "run_date", comment: "Run Date and Time"
+    t.string "file_description", limit: 40, comment: "Description of this file"
+    t.integer "appraisal_year", comment: "Appraisal or Tax Year"
+    t.integer "supplement_number", comment: "Supplement Number"
+    t.string "entity_code", limit: 10, comment: "Entity Code or MULT if multiple entities"
+    t.string "entity_description", limit: 40, comment: "Entity Description or list of entities"
+    t.string "office_name", limit: 30, comment: "Office name generating file"
+    t.string "operator", limit: 20, comment: "Operator generating file"
+    t.string "pacs_version", limit: 10, comment: "PACS version number"
+    t.string "export_version", limit: 10, comment: "Export OCX version number"
+    t.string "value_option", limit: 10, comment: "If property values are not included in this tape, then this field will contain NO VALUES otherwise, it will be blank."
+    t.string "office_use_only", limit: 50, comment: "Comma separated answers to all questions generating transfer file"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "arbitrations", force: :cascade do |t|
-    t.integer "prop_id"
-    t.integer "prop_val_yr"
-    t.string "geo_id", limit: 50
-    t.string "ref_id1", limit: 25
-    t.string "ref_id2", limit: 25
+    t.integer "prop_id", comment: "Property ID"
+    t.integer "prop_val_yr", comment: "Year"
+    t.string "geo_id", limit: 50, comment: "Geographic ID"
+    t.string "ref_id1", limit: 25, comment: "Ref ID 1"
+    t.string "ref_id2", limit: 25, comment: "Ref ID 2"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "arbs", force: :cascade do |t|
-    t.integer "prop_id"
-    t.integer "prop_val_yr"
-    t.string "geo_id", limit: 50
-    t.string "ref_id1", limit: 25
-    t.string "ref_id2", limit: 25
-    t.string "ARB_Status", limit: 10
+    t.integer "prop_id", comment: "Property ID"
+    t.integer "prop_val_yr", comment: "Year"
+    t.string "geo_id", limit: 50, comment: "Geographic ID"
+    t.string "ref_id1", limit: 25, comment: "Ref ID 1"
+    t.string "ref_id2", limit: 25, comment: "Ref ID 2"
+    t.string "ARB_Status", limit: 10, comment: "ARB Status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "countries", force: :cascade do |t|
-    t.string "country_cd", limit: 5
-    t.string "country_name", limit: 50
+    t.string "country_cd", limit: 5, comment: "Country Code"
+    t.string "country_name", limit: 50, comment: "Country Name (or Description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "entities", force: :cascade do |t|
-    t.integer "entity_id"
-    t.string "entity_cd", limit: 5
+    t.integer "entity_id", comment: "Entity id"
+    t.string "entity_cd", limit: 5, comment: "Entity Code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "imp_dets", force: :cascade do |t|
-    t.integer "prop_id"
-    t.integer "prop_val_yr"
-    t.integer "imprv_id"
-    t.integer "imprv_det_id"
-    t.string "Imprv_det_type_cd", limit: 10
-    t.string "Imprv_det_type_desc", limit: 25
-    t.string "Imprv_det_class_cd", limit: 10
-    t.integer "yr_built"
-    t.integer "depreciation_yr"
-    t.integer "imprv_det_area"
-    t.integer "imprv_det_val"
-    t.string "sketch_cmds", limit: 500
+    t.integer "prop_id", comment: "Property ID"
+    t.integer "prop_val_yr", comment: "Year"
+    t.integer "imprv_id", comment: "Improvement ID"
+    t.integer "imprv_det_id", comment: "Improvement Detail ID"
+    t.string "Imprv_det_type_cd", limit: 10, comment: "Improvement Detail Type Cd"
+    t.string "Imprv_det_type_desc", limit: 25, comment: "Improvement Detail Description"
+    t.string "Imprv_det_class_cd", limit: 10, comment: "Class Code"
+    t.integer "yr_built", comment: "Year Built"
+    t.integer "depreciation_yr", comment: "Depreciation Year"
+    t.integer "imprv_det_area", comment: "Area"
+    t.integer "imprv_det_val", comment: "Detail Value"
+    t.string "sketch_cmds", limit: 500, comment: "Sketch Commands"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "imp_infos", force: :cascade do |t|
-    t.integer "prop_id"
-    t.integer "prop_val_yr"
-    t.integer "imprv_id"
-    t.string "imprv_type_cd", limit: 10
-    t.string "imprv_type_desc", limit: 25
-    t.string "imprv_state_cd", limit: 5
-    t.boolean "imprv_homesite", default: false, null: false
-    t.integer "imprv_val"
-    t.decimal "imprv_homesite_pct", precision: 15, scale: 10
-    t.boolean "omitted", default: false, null: false
-    t.integer "omitted_imprv_val"
+    t.integer "prop_id", comment: "Property ID"
+    t.integer "prop_val_yr", comment: "Year"
+    t.integer "imprv_id", comment: "Improvement ID"
+    t.string "imprv_type_cd", limit: 10, comment: "Improvement Type"
+    t.string "imprv_type_desc", limit: 25, comment: "Improvement Description"
+    t.string "imprv_state_cd", limit: 5, comment: "State Code"
+    t.boolean "imprv_homesite", default: false, null: false, comment: "Y indicates Homesite improvement, N non Homesite"
+    t.integer "imprv_val", comment: "Improvement Value"
+    t.decimal "imprv_homesite_pct", precision: 15, scale: 10, comment: "Homesite Apportionment Percentage"
+    t.boolean "omitted", default: false, null: false, comment: "Omitted Improvement (Y or N)"
+    t.integer "omitted_imprv_val", comment: "Omitted Value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "land_dets", force: :cascade do |t|
-    t.integer "prop_id"
-    t.integer "prop_val_yr"
-    t.integer "land_seg_id"
-    t.string "land_type_cd", limit: 10
-    t.string "land_type_desc", limit: 25
-    t.string "state_cd", limit: 5
-    t.boolean "land_seg_homesite", default: false, null: false
-    t.decimal "size_acres", precision: 14, scale: 4
-    t.integer "size_square_feet"
-    t.integer "effective_front"
-    t.integer "effective_depth"
-    t.string "mkt_ls_method", limit: 5
-    t.string "mkt_ls_class", limit: 10
-    t.integer "land_seg_mkt_val"
-    t.boolean "ag_apply", default: false, null: false
-    t.string "ag_ls_method", limit: 5
-    t.string "ag_ls_class", limit: 10
-    t.integer "ag_value"
-    t.decimal "land_homesite_pct", precision: 15, scale: 10
+    t.integer "prop_id", comment: "Property ID"
+    t.integer "prop_val_yr", comment: "Year"
+    t.integer "land_seg_id", comment: "Unique Identifier"
+    t.string "land_type_cd", limit: 10, comment: "Land Type Code"
+    t.string "land_type_desc", limit: 25, comment: "Land Type Description"
+    t.string "state_cd", limit: 5, comment: "State Code"
+    t.boolean "land_seg_homesite", default: false, null: false, comment: "T indicates Homesite improvement, F non Homesite"
+    t.decimal "size_acres", precision: 14, scale: 4, comment: "Size Acres ( 4 Decimals )"
+    t.integer "size_square_feet", comment: "Size Square Feet"
+    t.integer "effective_front", comment: "Effective Front"
+    t.integer "effective_depth", comment: "Effective Depth"
+    t.string "mkt_ls_method", limit: 5, comment: "Market Method"
+    t.string "mkt_ls_class", limit: 10, comment: "Market Class"
+    t.integer "land_seg_mkt_val", comment: "Market Value"
+    t.boolean "ag_apply", default: false, null: false, comment: "T indicates property has ag, F no ag"
+    t.string "ag_ls_method", limit: 5, comment: "Ag Method"
+    t.string "ag_ls_class", limit: 10, comment: "Ag Class"
+    t.integer "ag_value", comment: "Ag Value"
+    t.decimal "land_homesite_pct", precision: 15, scale: 10, comment: "Homesite Apportionment Percentage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "lawsuits", force: :cascade do |t|
-    t.integer "prop_id"
-    t.integer "prop_val_yr"
-    t.string "geo_id", limit: 50
-    t.string "ref_id1", limit: 25
-    t.string "ref_id2", limit: 25
+    t.integer "prop_id", comment: "Property ID"
+    t.integer "prop_val_yr", comment: "Year"
+    t.string "geo_id", limit: 50, comment: "Geographic ID"
+    t.string "ref_id1", limit: 25, comment: "Ref ID 1"
+    t.string "ref_id2", limit: 25, comment: "Ref ID 2"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "prop_ents", force: :cascade do |t|
-    t.integer "prop_id"
-    t.integer "prop_val_yr"
-    t.integer "sup_num"
-    t.integer "owner_id"
-    t.integer "entity_id"
-    t.string "entity_cd", limit: 10
-    t.string "entity_name", limit: 50
-    t.string "entity_xref_id", limit: 20
-    t.integer "assessed_val"
-    t.integer "taxable_val"
-    t.integer "ab_amt"
-    t.integer "en_amt"
-    t.integer "fr_amt"
-    t.integer "ht_amt"
-    t.integer "pro_amt"
-    t.integer "pc_amt"
-    t.integer "so_amt"
-    t.integer "ex366_amt"
-    t.integer "hs_amt"
-    t.integer "ov65_amt"
-    t.integer "dp_amt"
-    t.integer "dv_amt"
-    t.integer "ex_amt"
-    t.integer "ch_amt"
-    t.integer "market_value"
-    t.integer "appraised_value"
-    t.integer "hs_cap"
-    t.integer "ag_late_loss"
-    t.integer "freeport_late_loss"
-    t.integer "hs_state_amt"
-    t.integer "hs_local_amt"
-    t.integer "land_hstd_val"
-    t.integer "land_non_hstd_val"
-    t.integer "imprv_hstd_val"
-    t.integer "imprv_non_hstd_val"
-    t.integer "ag_use_val"
-    t.integer "ag_market_val"
-    t.integer "tim_use_val"
-    t.integer "tim_market_val"
-    t.boolean "partial_entity", default: false, null: false
-    t.integer "freeze_yr"
-    t.integer "freeze_ceiling"
-    t.boolean "freeze_transfer_flag", default: false, null: false
-    t.date "freeze_transfer_date"
-    t.integer "freeze_previous_tax"
-    t.integer "freeze_previous_tax_unfrozen"
-    t.decimal "freeze_transfer_percentage", precision: 9, scale: 6
-    t.integer "lve_amt"
-    t.integer "eco_amt"
-    t.integer "ag_use_val_ne"
-    t.integer "ag_use_val_ex"
-    t.integer "ag_market_ne"
-    t.integer "ag_market_ex"
-    t.integer "timber_use_ne"
-    t.integer "timber_use_ex"
-    t.integer "timber_market_ne"
-    t.integer "timber_market_ex"
-    t.integer "new_val_hs"
-    t.integer "new_val_nhs"
-    t.integer "new_val_p"
-    t.integer "new_val_taxable"
-    t.integer "dataset_id"
-    t.integer "chodo_amt"
-    t.decimal "ent_pct_land_hs", precision: 15, scale: 10
-    t.decimal "ent_pct_land_nonhs", precision: 15, scale: 10
-    t.decimal "ent_pct_imprv_hs", precision: 15, scale: 10
-    t.decimal "ent_pct_imprv_nonhs", precision: 15, scale: 10
-    t.decimal "ent_pct_ag_use", precision: 15, scale: 10
-    t.decimal "ent_pct_ag_mkt", precision: 15, scale: 10
-    t.decimal "ent_pct_tim_use", precision: 15, scale: 10
-    t.decimal "ent_pct_tim_mkt", precision: 15, scale: 10
-    t.decimal "ent_pct_pers", precision: 15, scale: 10
-    t.decimal "ent_pct_min", precision: 15, scale: 10
-    t.decimal "ent_pct_auto", precision: 15, scale: 10
-    t.integer "lih_amt"
-    t.integer "git_amt"
-    t.integer "dvhs_amt"
-    t.boolean "tax_increment_flag", default: false, null: false
-    t.integer "tax_increment_imprv_val"
-    t.integer "tax_increment_land_val"
-    t.decimal "weed_taxable_acres", precision: 15, scale: 4
-    t.decimal "hs_allocation_factor", precision: 15, scale: 10
-    t.decimal "ov65_allocation_factor", precision: 15, scale: 10
-    t.decimal "ov65s_allocation_factor", precision: 15, scale: 10
-    t.decimal "dp_allocation_factor", precision: 15, scale: 10
-    t.decimal "dps_allocation_factor", precision: 15, scale: 10
-    t.decimal "dv1_allocation_factor", precision: 15, scale: 10
-    t.decimal "dv1s_allocation_factor", precision: 15, scale: 10
-    t.decimal "dv2_allocation_factor", precision: 15, scale: 10
-    t.decimal "dv2s_allocation_factor", precision: 15, scale: 10
-    t.decimal "dv3_allocation_factor", precision: 15, scale: 10
-    t.decimal "dv3s_allocation_factor", precision: 15, scale: 10
-    t.decimal "dv4_allocation_factor", precision: 15, scale: 10
-    t.decimal "dv4s_allocation_factor", precision: 15, scale: 10
-    t.decimal "dvhs_allocation_factor", precision: 15, scale: 10
-    t.decimal "ex_allocation_factor", precision: 15, scale: 10
-    t.decimal "ab_allocation_factor", precision: 15, scale: 10
-    t.decimal "en_allocation_factor", precision: 15, scale: 10
-    t.decimal "fr_allocation_factor", precision: 15, scale: 10
-    t.decimal "ht_allocation_factor", precision: 15, scale: 10
-    t.decimal "pro_allocation_factor", precision: 15, scale: 10
-    t.decimal "pc_allocation_factor", precision: 15, scale: 10
-    t.decimal "so_allocation_factor", precision: 15, scale: 10
-    t.decimal "ex366_allocation_factor", precision: 15, scale: 10
-    t.decimal "ch_allocation_factor", precision: 15, scale: 10
-    t.decimal "eco_allocation_factor", precision: 15, scale: 10
-    t.decimal "chodo_allocation_factor", precision: 15, scale: 10
-    t.decimal "lih_allocation_factor", precision: 15, scale: 10
-    t.decimal "git_allocation_factor", precision: 15, scale: 10
-    t.string "freeze_exmpt_type_cd", limit: 5
-    t.string "freeze_transfer_exmpt_type_cd", limit: 5
-    t.string "tax_increment_zone_cd", limit: 10
-    t.string "tax_increment_zone_desc", limit: 50
-    t.integer "omitted_imprv_hstd_val"
-    t.integer "omitted_imprv_non_hstd_val"
-    t.integer "clt_amt"
-    t.decimal "clt_allocation_factor", precision: 15, scale: 10
-    t.integer "dvhss_amt"
-    t.decimal "dvhss_allocation_factor", precision: 15, scale: 10
-    t.decimal "homestead_group_exemption_factor", precision: 15, scale: 10
-    t.integer "ex_xd_amt"
-    t.decimal "ex_xd_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xf_amt"
-    t.decimal "ex_xf_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xg_amt"
-    t.decimal "ex_xg_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xh_amt"
-    t.decimal "ex_xh_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xi_amt"
-    t.decimal "ex_xi_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xj_amt"
-    t.decimal "ex_xj_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xl_amt"
-    t.decimal "ex_xl_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xm_amt"
-    t.decimal "ex_xm_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xn_amt"
-    t.decimal "ex_xn_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xo_amt"
-    t.decimal "ex_xo_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xp_amt"
-    t.decimal "ex_xp_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xq_amt"
-    t.decimal "ex_xq_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xr_amt"
-    t.decimal "ex_xr_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xs_amt"
-    t.decimal "ex_xs_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xt_amt"
-    t.decimal "ex_xt_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xu_amt"
-    t.decimal "ex_xu_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xv_amt"
-    t.decimal "ex_xv_allocation_factor", precision: 15, scale: 10
-    t.integer "ex_xa_amt"
-    t.decimal "ex_xa_allocation_factor", precision: 15, scale: 10
-    t.decimal "lve_allocation_factor", precision: 15, scale: 10
-    t.integer "ppv_amt"
-    t.decimal "ppv_allocation_factor", precision: 15, scale: 10
-    t.integer "dvch_amt"
-    t.decimal "dvch_allocation_factor", precision: 15, scale: 10
-    t.integer "dvchs_amt"
-    t.decimal "dvchs_allocation_factor", precision: 15, scale: 10
-    t.integer "masss_amt"
-    t.decimal "masss_allocation_factor", precision: 15, scale: 10
-    t.integer "pp_late_interstate_allocation_val"
-    t.integer "frss_amt"
-    t.decimal "frss_allocation_factor", precision: 15, scale: 10
-    t.integer "abmno_amt"
-    t.decimal "abmno_allocation_factor", precision: 15, scale: 10
-    t.integer "dis_amt"
-    t.decimal "dis_allocation_factor", precision: 15, scale: 10
+    t.integer "prop_id", comment: "Property Id"
+    t.integer "prop_val_yr", comment: "Appraisal or Tax Year"
+    t.integer "sup_num", comment: "Supplement Version Number - 0 = represents certified data, supplemental data otherwise"
+    t.integer "owner_id", comment: "Owner Id"
+    t.integer "entity_id", comment: "Entity Id"
+    t.string "entity_cd", limit: 10, comment: "10 character code that will represent the entity"
+    t.string "entity_name", limit: 50, comment: "Descriptive Name of Entity"
+    t.string "entity_xref_id", limit: 20, comment: "Entity Local Xref Id Number"
+    t.integer "assessed_val", comment: "Assessed Value"
+    t.integer "taxable_val", comment: "Taxable Value"
+    t.integer "ab_amt", comment: "Abatement Exemption Amount Granted by Entity"
+    t.integer "en_amt", comment: "Energy Exemption Amount Granted by Entity"
+    t.integer "fr_amt", comment: "Freeport Exemption Amount Granted by Entity"
+    t.integer "ht_amt", comment: "Historical Exemption Amount Granted by Entity"
+    t.integer "pro_amt", comment: "Prorated Exemption Amount Granted by Entity"
+    t.integer "pc_amt", comment: "Pollution Control Exemption Amount Granted by Entity"
+    t.integer "so_amt", comment: "Solar Exemption Amount Granted by Entity"
+    t.integer "ex366_amt", comment: "EX366 Exemption Amount Granted by Entity\nProperties under $500 minimum exemption"
+    t.integer "hs_amt", comment: "Homestead Amount granted by entity"
+    t.integer "ov65_amt", comment: "Over 65 Amount granted by entity"
+    t.integer "dp_amt", comment: "Disability Exemption Amount granted by entity"
+    t.integer "dv_amt", comment: "Disabled Veteran Amount granted by entity"
+    t.integer "ex_amt", comment: "Total Exemption Amount granted by entity\n(Needed for Prorated Total Exemption Accounts)"
+    t.integer "ch_amt", comment: "Charitable Exemption Amount granted by entity"
+    t.integer "market_value", comment: "Market Value"
+    t.integer "appraised_value", comment: "Appraised Value"
+    t.integer "hs_cap", comment: "HS Cap"
+    t.integer "ag_late_loss", comment: "Late ag loss"
+    t.integer "freeport_late_loss", comment: "Late Freeport Loss"
+    t.integer "hs_state_amt", comment: "Homestead Exemption State Amount"
+    t.integer "hs_local_amt", comment: "Homestead Exemption Local Amount"
+    t.integer "land_hstd_val", comment: "Land Homestead Value"
+    t.integer "land_non_hstd_val", comment: "Land Non Homestead Value"
+    t.integer "imprv_hstd_val", comment: "Improvement Homestead Value"
+    t.integer "imprv_non_hstd_val", comment: "Improvement Non Homestead Value"
+    t.integer "ag_use_val", comment: "Agriculture Use Value"
+    t.integer "ag_market_val", comment: "Agriculture Market Value"
+    t.integer "tim_use_val", comment: "Timber Use Value"
+    t.integer "tim_market_val", comment: "Timber Market Value"
+    t.boolean "partial_entity", default: false, null: false, comment: "If T the property is not 100% within the entity."
+    t.integer "freeze_yr", comment: "Freeze Year"
+    t.integer "freeze_ceiling", comment: "Freeze Ceiling"
+    t.boolean "freeze_transfer_flag", default: false, null: false, comment: "Freeze Transfer Flag"
+    t.date "freeze_transfer_date", comment: "Freeze Transfer Date"
+    t.integer "freeze_previous_tax", comment: "Freeze Previous Tax"
+    t.integer "freeze_previous_tax_unfrozen", comment: "Freeze Previous Tax Unfrozen"
+    t.decimal "freeze_transfer_percentage", precision: 9, scale: 6, comment: "Freeze Transfer Percentage"
+    t.integer "lve_amt", comment: "Leased vehicle exemption amount"
+    t.integer "eco_amt", comment: "ECO exemption amount"
+    t.integer "ag_use_val_ne", comment: "Ag use val non-exempt"
+    t.integer "ag_use_val_ex", comment: "Ag use val exempt"
+    t.integer "ag_market_ne", comment: "Ag market non-exempt"
+    t.integer "ag_market_ex", comment: "Ag market exempt"
+    t.integer "timber_use_ne", comment: "Timber use non-exempt"
+    t.integer "timber_use_ex", comment: "Timber use exempt"
+    t.integer "timber_market_ne", comment: "Timber market non-exempt"
+    t.integer "timber_market_ex", comment: "Timber market exempt"
+    t.integer "new_val_hs", comment: "New Homesite Value"
+    t.integer "new_val_nhs", comment: "New Non-Homesite Value"
+    t.integer "new_val_p", comment: "New Personal Value"
+    t.integer "new_val_taxable", comment: "New Taxable Value"
+    t.integer "dataset_id", comment: "Unique number that identifies this export"
+    t.integer "chodo_amt", comment: "CHODO Exemption Amount Granted by Entity"
+    t.decimal "ent_pct_land_hs", precision: 15, scale: 10, comment: "Land Homesite Entity Percentage"
+    t.decimal "ent_pct_land_nonhs", precision: 15, scale: 10, comment: "Land Non-Homesite Entity Percentage"
+    t.decimal "ent_pct_imprv_hs", precision: 15, scale: 10, comment: "Improvement Homesite Entity Percentage"
+    t.decimal "ent_pct_imprv_nonhs", precision: 15, scale: 10, comment: "Improvement Non-Homesite Entity Percentage"
+    t.decimal "ent_pct_ag_use", precision: 15, scale: 10, comment: "Ag Use Entity Percentage"
+    t.decimal "ent_pct_ag_mkt", precision: 15, scale: 10, comment: "Ag Market Entity Percentage"
+    t.decimal "ent_pct_tim_use", precision: 15, scale: 10, comment: "Timber Use Entity Percentage"
+    t.decimal "ent_pct_tim_mkt", precision: 15, scale: 10, comment: "Timber Market Entity Percentage"
+    t.decimal "ent_pct_pers", precision: 15, scale: 10, comment: "Personal Property Entity Percentage"
+    t.decimal "ent_pct_min", precision: 15, scale: 10, comment: "Mineral Property Entity Percentage"
+    t.decimal "ent_pct_auto", precision: 15, scale: 10, comment: "Automotive Property Entity Percentage"
+    t.integer "lih_amt", comment: "LIH Exemption Amount Granted by Entity"
+    t.integer "git_amt", comment: "GIT Exemption Amount Granted by Entity"
+    t.integer "dvhs_amt", comment: "Disabled Veteran Homestead Amount granted by entity"
+    t.boolean "tax_increment_flag", default: false, null: false, comment: "Tax Increment Flag (T or F)"
+    t.integer "tax_increment_imprv_val", comment: "Tax Increment Improvement Value"
+    t.integer "tax_increment_land_val", comment: "Tax Increment Land Value"
+    t.decimal "weed_taxable_acres", precision: 15, scale: 4, comment: "Weed Taxable Acres (4 Decimal Places)"
+    t.decimal "hs_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for HS exemption"
+    t.decimal "ov65_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for OV65 exemption"
+    t.decimal "ov65s_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for OV65S exemption"
+    t.decimal "dp_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for DP exemption"
+    t.decimal "dps_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for DPS exemption"
+    t.decimal "dv1_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for DV1 exemption"
+    t.decimal "dv1s_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for DV1S exemption"
+    t.decimal "dv2_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for DV2 exemption"
+    t.decimal "dv2s_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for DV2S exemption"
+    t.decimal "dv3_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for DV3 exemption"
+    t.decimal "dv3s_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for DV3S exemption"
+    t.decimal "dv4_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for DV4 exemption"
+    t.decimal "dv4s_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for DV4S exemption"
+    t.decimal "dvhs_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for DVHS exemption"
+    t.decimal "ex_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for EX exemption"
+    t.decimal "ab_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for AB exemption"
+    t.decimal "en_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for EN exemption"
+    t.decimal "fr_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for FR exemption"
+    t.decimal "ht_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for HT exemption"
+    t.decimal "pro_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for PRO exemption"
+    t.decimal "pc_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for PC exemption"
+    t.decimal "so_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for SO exemption"
+    t.decimal "ex366_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for EX366 exemption"
+    t.decimal "ch_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for CH exemption"
+    t.decimal "eco_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for ECO exemption"
+    t.decimal "chodo_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for CHODO exemption"
+    t.decimal "lih_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for LIH exemption"
+    t.decimal "git_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for GIT exemption"
+    t.string "freeze_exmpt_type_cd", limit: 5, comment: "Freeze Exemption Type"
+    t.string "freeze_transfer_exmpt_type_cd", limit: 5, comment: "Freeze Transfer Exemption Type"
+    t.string "tax_increment_zone_cd", limit: 10, comment: "Tax Increment Zone Code"
+    t.string "tax_increment_zone_desc", limit: 50, comment: "Tax Increment Zone Description"
+    t.integer "omitted_imprv_hstd_val", comment: "Omitted Improvement Homestead Value by entity"
+    t.integer "omitted_imprv_non_hstd_val", comment: "Omitted Improvement Non-Homestead Value by entity"
+    t.integer "clt_amt", comment: "Community Land Trust Amount granted by entity"
+    t.decimal "clt_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for CLT exemption"
+    t.integer "dvhss_amt", comment: "DVHS Surviving Spouse Amount granted by entity"
+    t.decimal "dvhss_allocation_factor", precision: 15, scale: 10, comment: "Allocation Factor for DVHS Surviving Spouse  exemption"
+    t.decimal "homestead_group_exemption_factor", precision: 15, scale: 10, comment: "Homestead Group Exemption Factor (10 decimals)"
+    t.integer "ex_xd_amt", comment: "EX-XD 11.181 Exemption Amount granted by entity"
+    t.decimal "ex_xd_allocation_factor", precision: 15, scale: 10, comment: "EX-XD 11.181 exemption Allocation Factor"
+    t.integer "ex_xf_amt", comment: "EX-XF 11.183 Exemption Amount granted by entity"
+    t.decimal "ex_xf_allocation_factor", precision: 15, scale: 10, comment: "EX-XF 11.183 exemptionAllocation Factor"
+    t.integer "ex_xg_amt", comment: "EX-XG 11.184 Exemption Amount granted by entity"
+    t.decimal "ex_xg_allocation_factor", precision: 15, scale: 10, comment: "EX-XG 11.184 Exemption Allocation Factor"
+    t.integer "ex_xh_amt", comment: "EX-XH 11.185 Exemption Amount granted by entity"
+    t.decimal "ex_xh_allocation_factor", precision: 15, scale: 10, comment: "EX-XH 11.185 Exemption Allocation Factor"
+    t.integer "ex_xi_amt", comment: "EX-XI 11.19 Exemption Amount granted by entity"
+    t.decimal "ex_xi_allocation_factor", precision: 15, scale: 10, comment: "EX-XI 11.19 Exemption Allocation Factor"
+    t.integer "ex_xj_amt", comment: "EX-XJ 11.21 Exemption Amount granted by entity"
+    t.decimal "ex_xj_allocation_factor", precision: 15, scale: 10, comment: "EX-XJ 11.21 Exemption Allocation Factor"
+    t.integer "ex_xl_amt", comment: "EX-XL 11.231 Exemption Amount granted by entity"
+    t.decimal "ex_xl_allocation_factor", precision: 15, scale: 10, comment: "EX-XL 11.231 Exemption Allocation Factor"
+    t.integer "ex_xm_amt", comment: "EX-XM 11.25 Exemption Amount granted by entity"
+    t.decimal "ex_xm_allocation_factor", precision: 15, scale: 10, comment: "EX-XM 11.25 Exemption Allocation Factor"
+    t.integer "ex_xn_amt", comment: "EX-XN 11.252 Exemption Amount granted by entity"
+    t.decimal "ex_xn_allocation_factor", precision: 15, scale: 10, comment: "EX-XN 11.252 Exemption Allocation Factor"
+    t.integer "ex_xo_amt", comment: "EX-XO 11.254 Exemption Amount granted by entity"
+    t.decimal "ex_xo_allocation_factor", precision: 15, scale: 10, comment: "EX-XO 11.254 Exemption Allocation Factor"
+    t.integer "ex_xp_amt", comment: "EX-XP 11.271 Exemption Amount granted by entity"
+    t.decimal "ex_xp_allocation_factor", precision: 15, scale: 10, comment: "EX-XP 11.271 Exemption Allocation Factor"
+    t.integer "ex_xq_amt", comment: "EX-XQ 11.29 Exemption Amount granted by entity"
+    t.decimal "ex_xq_allocation_factor", precision: 15, scale: 10, comment: "EX-XQ 11.29 Exemption Allocation Factor"
+    t.integer "ex_xr_amt", comment: "EX-XR 11.30 Exemption Amount granted by entity"
+    t.decimal "ex_xr_allocation_factor", precision: 15, scale: 10, comment: "EX-XR 11.30 Exemption Allocation Factor"
+    t.integer "ex_xs_amt", comment: "EX-XS 11.33 Exemption Amount granted by entity"
+    t.decimal "ex_xs_allocation_factor", precision: 15, scale: 10, comment: "EX-XS 11.33 Exemption Allocation Factor"
+    t.integer "ex_xt_amt", comment: "EX-XT 11.34 Exemption Amount granted by entity"
+    t.decimal "ex_xt_allocation_factor", precision: 15, scale: 10, comment: "EX-XT 11.34 Exemption Allocation Factor"
+    t.integer "ex_xu_amt", comment: "EX-XU 11.23 Exemption Amount granted by entity"
+    t.decimal "ex_xu_allocation_factor", precision: 15, scale: 10, comment: "EX-XU 11.23 Exemption Allocation Factor"
+    t.integer "ex_xv_amt", comment: "EX-XV Exemption Amount granted by entity"
+    t.decimal "ex_xv_allocation_factor", precision: 15, scale: 10, comment: "EX-XV Exemption Allocation Factor"
+    t.integer "ex_xa_amt", comment: "EX-XA Exemption Amount granted by entity"
+    t.decimal "ex_xa_allocation_factor", precision: 15, scale: 10, comment: "EX-XA Exemption Allocation Factor"
+    t.decimal "lve_allocation_factor", precision: 15, scale: 10, comment: "Leased vehicle exemption allocation factor"
+    t.integer "ppv_amt", comment: "Personal Property vehicle exemption amount"
+    t.decimal "ppv_allocation_factor", precision: 15, scale: 10, comment: "Personal Property vehicle exemption allocation factor"
+    t.integer "dvch_amt", comment: "Disabled Veteran Charity Homestead exemption amount"
+    t.decimal "dvch_allocation_factor", precision: 15, scale: 10, comment: "Disabled Veteran Charity Homestead exemption allocation factor"
+    t.integer "dvchs_amt", comment: "Disabled Veteran Charity Homestead Spouse exemption amount"
+    t.decimal "dvchs_allocation_factor", precision: 15, scale: 10, comment: "Disabled Veteran Charity Homestead Spouse exemption allocation factor"
+    t.integer "masss_amt", comment: "Member Armed Services Surviving Spouse exemption amount"
+    t.decimal "masss_allocation_factor", precision: 15, scale: 10, comment: "Member Armed Services Surviving Spouse exemption allocation factor"
+    t.integer "pp_late_interstate_allocation_val", comment: "Property interstate allocation value that is subject to penalty by entity"
+    t.integer "frss_amt", comment: "First Responder Surviving Spouse exemption amount"
+    t.decimal "frss_allocation_factor", precision: 15, scale: 10, comment: "First Responder Surviving Spouse exemption allocation factor"
+    t.integer "abmno_amt", comment: "ABMNO (Abatement-MNO) exemption amount"
+    t.decimal "abmno_allocation_factor", precision: 15, scale: 10, comment: "ABMNO (Abatement-MNO) exemption allocation factor"
+    t.integer "dis_amt", comment: "Disaster Damage Exemption amount"
+    t.decimal "dis_allocation_factor", precision: 15, scale: 10, comment: "Disaster Damage Exemption allocation factor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "props", force: :cascade do |t|
-    t.integer "prop_id"
-    t.string "prop_type_cd", limit: 5
-    t.integer "prop_val_yr"
-    t.integer "sup_num"
-    t.string "sup_action", limit: 2
-    t.string "sup_cd", limit: 10
-    t.string "sup_desc", limit: 500
-    t.string "geo_id", limit: 50
-    t.integer "py_owner_id"
-    t.string "py_owner_name", limit: 70
-    t.boolean "partial_owner", default: false, null: false
-    t.integer "udi_group"
-    t.string "py_addr_line1", limit: 60
-    t.string "py_addr_line2", limit: 60
-    t.string "py_addr_line3", limit: 60
-    t.string "py_addr_city", limit: 50
-    t.string "py_addr_state", limit: 50
-    t.string "py_addr_country", limit: 5
-    t.string "py_addr_zip", limit: 5
-    t.string "py_addr_zip_cass", limit: 4
-    t.string "py_addr_zip_rt", limit: 2
-    t.boolean "py_confidential_flag", default: false, null: false
-    t.boolean "py_address_suppress_flag", default: false, null: false
-    t.boolean "py_addr_ml_deliverable", default: false, null: false
-    t.string "situs_street_prefx", limit: 10
-    t.string "situs_street", limit: 50
-    t.string "situs_street_suffix", limit: 10
-    t.string "situs_city", limit: 30
-    t.string "situs_zip", limit: 10
-    t.string "legal_desc", limit: 255
-    t.string "legal_desc2", limit: 255
-    t.decimal "legal_acreage", precision: 16, scale: 4
-    t.string "abs_subdv_cd", limit: 10
-    t.string "hood_cd", limit: 10
-    t.string "block", limit: 50
-    t.string "tract_or_lot", limit: 50
-    t.integer "land_hstd_val"
-    t.integer "land_non_hstd_val"
-    t.integer "imprv_hstd_val"
-    t.integer "imprv_non_hstd_val"
-    t.integer "ag_use_val"
-    t.integer "ag_market"
-    t.integer "timber_use"
-    t.integer "timber_market"
-    t.integer "appraised_val"
-    t.integer "ten_percent_cap"
-    t.integer "assessed_val"
-    t.boolean "arb_protest_flag", default: false, null: false
-    t.string "deed_book_id", limit: 20
-    t.string "deed_book_page", limit: 20
-    t.string "deed_dt", limit: 25
-    t.integer "mortgage_co_id"
-    t.string "mortage_co_name", limit: 70
-    t.string "mortgage_acct_id", limit: 50
-    t.integer "jan1_owner_id"
-    t.string "jan1_owner_name", limit: 70
-    t.string "jan1_addr_line1", limit: 60
-    t.string "jan1_addr_line2", limit: 60
-    t.string "jan1_addr_line3", limit: 60
-    t.string "jan1_addr_city", limit: 50
-    t.string "jan1_addr_state", limit: 50
-    t.string "jan1_addr_country", limit: 5
-    t.string "jan1_addr_zip", limit: 5
-    t.string "jan1_addr_zip_cass", limit: 4
-    t.string "jan1_addr_zip_rt", limit: 2
-    t.boolean "jan1_confidential_flag", default: false, null: false
-    t.boolean "jan1_address_suppress_flag", default: false, null: false
-    t.boolean "jan1_ml_deliverable", default: false, null: false
-    t.boolean "hs_exempt", default: false, null: false
-    t.boolean "ov65_exempt", default: false, null: false
-    t.string "ov65_prorate_begin", limit: 25
-    t.string "ov65_prorate_end", limit: 25
-    t.boolean "ov65s_exempt", default: false, null: false
-    t.boolean "dp_exempt", default: false, null: false
-    t.boolean "dv1_exempt", default: false, null: false
-    t.boolean "dv1s_exempt", default: false, null: false
-    t.boolean "dv2_exempt", default: false, null: false
-    t.boolean "dv2s_exempt", default: false, null: false
-    t.boolean "dv3_exempt", default: false, null: false
-    t.boolean "dv3s_exempt", default: false, null: false
-    t.boolean "dv4_exempt", default: false, null: false
-    t.boolean "dv4s_exempt", default: false, null: false
-    t.boolean "ex_exempt", default: false, null: false
-    t.string "ex_prorate_begin", limit: 25
-    t.string "ex_prorate_end", limit: 25
-    t.boolean "lve_exempt", default: false, null: false
-    t.boolean "ab_exempt", default: false, null: false
-    t.boolean "en_exempt", default: false, null: false
-    t.boolean "fr_exempt", default: false, null: false
-    t.boolean "ht_exempt", default: false, null: false
-    t.boolean "pro_exempt", default: false, null: false
-    t.boolean "pc_exempt", default: false, null: false
-    t.boolean "so_exempt", default: false, null: false
-    t.boolean "ex366_exempt", default: false, null: false
-    t.boolean "ch_exempt", default: false, null: false
-    t.string "imprv_state_cd", limit: 10
-    t.string "land_state_cd", limit: 10
-    t.string "personal_state_cd", limit: 10
-    t.string "mineral_state_cd", limit: 10
-    t.integer "land_acres"
-    t.integer "entity_agent_id"
-    t.string "entity_agent_name", limit: 70
-    t.string "entity_agent_addr_line1", limit: 60
-    t.string "entity_agent_addr_line2", limit: 60
-    t.string "entity_agent_addr_line3", limit: 60
-    t.string "entity_agent_city", limit: 50
-    t.string "entity_agent_state", limit: 50
-    t.string "entity_agent_country", limit: 5
-    t.string "entity_agent_zip", limit: 5
-    t.string "entity_agent_cass", limit: 4
-    t.string "entity_agent_rt", limit: 2
-    t.integer "ca_agent_id"
-    t.string "ca_agent_name", limit: 70
-    t.string "ca_agent_addr_line1", limit: 60
-    t.string "ca_agent_addr_line2", limit: 60
-    t.string "ca_agent_addr_line3", limit: 60
-    t.string "ca_agent_city", limit: 50
-    t.string "ca_agent_state", limit: 50
-    t.string "ca_agent_country", limit: 5
-    t.string "ca_agent_zip", limit: 5
-    t.string "ca_agent_zip_cass", limit: 4
-    t.string "ca_agent_zip_rt", limit: 2
-    t.integer "arb_agent_id"
-    t.string "arb_agent_name", limit: 70
-    t.string "arb_agent_addr_line1", limit: 60
-    t.string "arb_agent_addr_line2", limit: 60
-    t.string "arb_agent_addr_line3", limit: 60
-    t.string "arb_agent_city", limit: 50
-    t.string "arb_agent_state", limit: 50
-    t.string "arb_agent_country", limit: 5
-    t.string "arb_agent_zip", limit: 5
-    t.string "arb_agent_zip_cass", limit: 4
-    t.string "arb_agent_zip_rt", limit: 2
-    t.string "mineral_type_of_int", limit: 5
-    t.decimal "mineral_int_pct", precision: 15, scale: 10
-    t.string "productivity_use_code", limit: 3
-    t.integer "timber_78_market"
-    t.integer "ag_late_loss"
-    t.integer "late_freeport_penalty"
-    t.string "dba", limit: 40
-    t.integer "market_value"
-    t.date "ov65_deferral_date"
-    t.date "dp_deferral_date"
-    t.string "ref_id1", limit: 25
-    t.string "ref_id2", limit: 25
-    t.string "situs_num", limit: 15
-    t.string "situs_unit", limit: 5
-    t.integer "appr_owner_id"
-    t.string "appr_owner_name", limit: 70
-    t.string "appr_addr_line1", limit: 60
-    t.string "appr_addr_line2", limit: 60
-    t.string "appr_addr_line3", limit: 60
-    t.string "appr_addr_city", limit: 50
-    t.string "appr_addr_state", limit: 50
-    t.string "appr_addr_country", limit: 5
-    t.string "appr_addr_zip", limit: 5
-    t.string "appr_addr_zip_cass", limit: 4
-    t.string "appr_addr_zip_cass_route", limit: 2
-    t.boolean "appr_ml_deliverable", default: false, null: false
-    t.boolean "appr_confidential_flag", default: false, null: false
-    t.boolean "appr_address_suppress_flag", default: false, null: false
-    t.string "appr_confidential_name", limit: 70
-    t.string "py_confidential_name", limit: 70
-    t.string "jan1_confidential_name", limit: 70
-    t.boolean "rendition_filed", default: false, null: false
-    t.date "rendition_date"
-    t.integer "rendition_penalty"
-    t.date "rendition_penalty_date_paid"
-    t.integer "rendition_fraud_penalty"
-    t.date "rendition_fraud_penalty_date_paid"
-    t.string "entities", limit: 140
-    t.boolean "eco_exempt", default: false, null: false
-    t.integer "dataset_id"
-    t.string "deed_num", limit: 50
-    t.boolean "chodo_exempt", default: false, null: false
-    t.boolean "local_option_pct_only_flag_hs", default: false, null: false
-    t.boolean "local_option_pct_only_flag_ov65", default: false, null: false
-    t.boolean "local_option_pct_only_flag_ov65s", default: false, null: false
-    t.boolean "local_option_pct_only_flag_dp", default: false, null: false
-    t.boolean "freeze_only_flag_ov65", default: false, null: false
-    t.boolean "freeze_only_flag_ov65s", default: false, null: false
-    t.boolean "freeze_only_flag_dp", default: false, null: false
-    t.boolean "apply_percent_exemption_flag", default: false, null: false
-    t.string "exemption_percentage", limit: 15
-    t.boolean "vit_flag", default: false, null: false
-    t.boolean "lih_exempt", default: false, null: false
-    t.boolean "git_exempt", default: false, null: false
-    t.boolean "dps_exempt", default: false, null: false
-    t.date "dps_deferral_date"
-    t.boolean "local_option_pct_only_flag_dps", default: false, null: false
-    t.boolean "freeze_only_flag_dps", default: false, null: false
-    t.boolean "dvhs_exempt", default: false, null: false
-    t.integer "hs_qualify_yr"
-    t.integer "ov65_qualify_yr"
-    t.integer "ov65s_qualify_yr"
-    t.integer "dp_qualify_yr"
-    t.integer "dps_qualify_yr"
-    t.integer "dv1_qualify_yr"
-    t.integer "dv1s_qualify_yr"
-    t.integer "dv2_qualify_yr"
-    t.integer "dv2s_qualify_yr"
-    t.integer "dv3_qualify_yr"
-    t.integer "dv3s_qualify_yr"
-    t.integer "dv4_qualify_yr"
-    t.integer "dv4s_qualify_yr"
-    t.integer "dvhs_qualify_yr"
-    t.integer "ex_qualify_yr"
-    t.integer "ab_qualify_yr"
-    t.integer "en_qualify_yr"
-    t.integer "fr_qualify_yr"
-    t.integer "ht_qualify_yr"
-    t.integer "pro_qualify_yr"
-    t.integer "pc_qualify_yr"
-    t.integer "so_qualify_yr"
-    t.integer "ex366_qualify_yr"
-    t.integer "ch_qualify_yr"
-    t.integer "eco_qualify_yr"
-    t.integer "chodo_qualify_yr"
-    t.integer "lih_qualify_yr"
-    t.integer "git_qualify_yr"
-    t.string "mortgage_addr_line1", limit: 60
-    t.string "mortgage_addr_line2", limit: 60
-    t.string "mortgage_addr_line3", limit: 60
-    t.string "mortgage_addr_city", limit: 50
-    t.string "mortgage_addr_state", limit: 50
-    t.string "mortgage_addr_country", limit: 5
-    t.string "mortgage_addr_zip", limit: 5
-    t.string "mortgage_addr_zip_cass", limit: 4
-    t.string "mortgage_addr_zip_rt", limit: 2
-    t.boolean "mortgage_addr_ml_deliverable", default: false, null: false
-    t.string "sic_code", limit: 10
-    t.boolean "omitted_property_flag", default: false, null: false
-    t.string "hs_prorate_begin", limit: 25
-    t.string "hs_prorate_end", limit: 25
-    t.string "ov65s_prorate_begin", limit: 25
-    t.string "ov65s_prorate_end", limit: 25
-    t.string "dp_prorate_begin", limit: 25
-    t.string "dp_prorate_end", limit: 25
-    t.string "dv1_prorate_begin", limit: 25
-    t.string "dv1_prorate_end", limit: 25
-    t.string "dv1s_prorate_begin", limit: 25
-    t.string "dv1s_prorate_end", limit: 25
-    t.string "dv2_prorate_begin", limit: 25
-    t.string "dv2_prorate_end", limit: 25
-    t.string "dv2s_prorate_begin", limit: 25
-    t.string "dv2s_prorate_end", limit: 25
-    t.string "dv3_prorate_begin", limit: 25
-    t.string "dv3_prorate_end", limit: 25
-    t.string "dv3s_prorate_begin", limit: 25
-    t.string "dv3s_prorate_end", limit: 25
-    t.string "dv4_prorate_begin", limit: 25
-    t.string "dv4_prorate_end", limit: 25
-    t.string "dv4s_prorate_begin", limit: 25
-    t.string "dv4s_prorate_end", limit: 25
-    t.string "lve_prorate_begin", limit: 25
-    t.string "lve_prorate_end", limit: 25
-    t.string "ab_prorate_begin", limit: 25
-    t.string "ab_prorate_end", limit: 25
-    t.string "en_prorate_begin", limit: 25
-    t.string "en_prorate_end", limit: 25
-    t.string "fr_prorate_begin", limit: 25
-    t.string "fr_prorate_end", limit: 25
-    t.string "ht_prorate_begin", limit: 25
-    t.string "ht_prorate_end", limit: 25
-    t.string "pro_prorate_begin", limit: 25
-    t.string "pro_prorate_end", limit: 25
-    t.string "pc_prorate_begin", limit: 25
-    t.string "pc_prorate_end", limit: 25
-    t.string "so_prorate_begin", limit: 25
-    t.string "so_prorate_end", limit: 25
-    t.string "ex366_prorate_begin", limit: 25
-    t.string "ex366_prorate_end", limit: 25
-    t.string "ch_prorate_begin", limit: 25
-    t.string "ch_prorate_end", limit: 25
-    t.string "dps_prorate_begin", limit: 25
-    t.string "dps_prorate_end", limit: 25
-    t.string "eco_prorate_begin", limit: 25
-    t.string "eco_prorate_end", limit: 25
-    t.string "chodo_prorate_begin", limit: 25
-    t.string "chodo_prorate_end", limit: 25
-    t.string "lih_prorate_begin", limit: 25
-    t.string "lih_prorate_end", limit: 25
-    t.string "git_prorate_begin", limit: 25
-    t.string "git_prorate_end", limit: 25
-    t.boolean "clt_exempt", default: false, null: false
-    t.string "clt_prorate_begin", limit: 25
-    t.string "clt_prorate_end", limit: 25
-    t.integer "clt_qualify_yr"
-    t.boolean "dvhss_exempt", default: false, null: false
-    t.string "dvhss_prorate_begin", limit: 25
-    t.string "dvhss_prorate_end", limit: 25
-    t.integer "dvhss_qualify_yr"
-    t.integer "omitted_imprv_hstd_val"
-    t.integer "omitted_imprv_non_hstd_val"
-    t.string "dvhs_prorate_begin", limit: 25
-    t.string "dvhs_prorate_end", limit: 25
-    t.boolean "ex_xd_exempt", default: false, null: false
-    t.integer "ex_xd_qualify_yr"
-    t.string "ex_xd_prorate_begin", limit: 25
-    t.string "ex_xd_prorate_end", limit: 25
-    t.boolean "ex_xf_exempt", default: false, null: false
-    t.integer "ex_xf_qualify_yr"
-    t.string "ex_xf_prorate_begin", limit: 25
-    t.string "ex_xf_prorate_end", limit: 25
-    t.boolean "ex_xg_exempt", default: false, null: false
-    t.integer "ex_xg_qualify_yr"
-    t.string "ex_xg_prorate_begin", limit: 25
-    t.string "ex_xg_prorate_end", limit: 25
-    t.boolean "ex_xh_exempt", default: false, null: false
-    t.integer "ex_xh_qualify_yr"
-    t.string "ex_xh_prorate_begin", limit: 25
-    t.string "ex_xh_prorate_end", limit: 25
-    t.boolean "ex_xi_exempt", default: false, null: false
-    t.integer "ex_xi_qualify_yr"
-    t.string "ex_xi_prorate_begin", limit: 25
-    t.string "ex_xi_prorate_end", limit: 25
-    t.boolean "ex_xj_exempt", default: false, null: false
-    t.integer "ex_xj_qualify_yr"
-    t.string "ex_xj_prorate_begin", limit: 25
-    t.string "ex_xj_prorate_end", limit: 25
-    t.boolean "ex_xl_exempt", default: false, null: false
-    t.integer "ex_xl_qualify_yr"
-    t.string "ex_xl_prorate_begin", limit: 25
-    t.string "ex_xl_prorate_end", limit: 25
-    t.boolean "ex_xm_exempt", default: false, null: false
-    t.integer "ex_xm_qualify_yr"
-    t.string "ex_xm_prorate_begin", limit: 25
-    t.string "ex_xm_prorate_end", limit: 25
-    t.boolean "ex_xn_exempt", default: false, null: false
-    t.integer "ex_xn_qualify_yr"
-    t.string "ex_xn_prorate_begin", limit: 25
-    t.string "ex_xn_prorate_end", limit: 25
-    t.boolean "ex_xo_exempt", default: false, null: false
-    t.integer "ex_xo_qualify_yr"
-    t.string "ex_xo_prorate_begin", limit: 25
-    t.string "ex_xo_prorate_end", limit: 25
-    t.boolean "ex_xp_exempt", default: false, null: false
-    t.integer "ex_xp_qualify_yr"
-    t.string "ex_xp_prorate_begin", limit: 25
-    t.string "ex_xp_prorate_end", limit: 25
-    t.boolean "ex_xq_exempt", default: false, null: false
-    t.integer "ex_xq_qualify_yr"
-    t.string "ex_xq_prorate_begin", limit: 25
-    t.string "ex_xq_prorate_end", limit: 25
-    t.boolean "ex_xr_exempt", default: false, null: false
-    t.integer "ex_xr_qualify_yr"
-    t.string "ex_xr_prorate_begin", limit: 25
-    t.string "ex_xr_prorate_end", limit: 25
-    t.boolean "ex_xs_exempt", default: false, null: false
-    t.integer "ex_xs_qualify_yr"
-    t.string "ex_xs_prorate_begin", limit: 25
-    t.string "ex_xs_prorate_end", limit: 25
-    t.boolean "ex_xt_exempt", default: false, null: false
-    t.integer "ex_xt_qualify_yr"
-    t.string "ex_xt_prorate_begin", limit: 25
-    t.string "ex_xt_prorate_end", limit: 25
-    t.boolean "ex_xu_exempt", default: false, null: false
-    t.integer "ex_xu_qualify_yr"
-    t.string "ex_xu_prorate_begin", limit: 25
-    t.string "ex_xu_prorate_end", limit: 25
-    t.boolean "ex_xv_exempt", default: false, null: false
-    t.integer "ex_xv_qualify_yr"
-    t.string "ex_xv_prorate_begin", limit: 25
-    t.string "ex_xv_prorate_end", limit: 25
-    t.boolean "ex_xa_exempt", default: false, null: false
-    t.integer "ex_xa_qualify_yr"
-    t.string "ex_xa_prorate_begin", limit: 25
-    t.string "ex_xa_prorate_end", limit: 25
-    t.integer "lve_qualify_yr"
-    t.boolean "ppv_exempt", default: false, null: false
-    t.integer "ppv_qualify_yr"
-    t.string "ppv_prorate_begin", limit: 25
-    t.string "ppv_prorate_end", limit: 25
-    t.boolean "dvch_exempt", default: false, null: false
-    t.integer "dvch_qualify_yr"
-    t.string "dvch_prorate_begin", limit: 25
-    t.string "dvch_prorate_end", limit: 25
-    t.boolean "dvchs_exempt", default: false, null: false
-    t.integer "dvchs_qualify_yr"
-    t.string "dvchs_prorate_begin", limit: 25
-    t.string "dvchs_prorate_end", limit: 25
-    t.boolean "masss_exempt", default: false, null: false
-    t.integer "masss_qualify_yr"
-    t.string "masss_prorate_begin", limit: 25
-    t.string "masss_prorate_end", limit: 25
-    t.integer "pp_late_interstate_allocation_val"
-    t.integer "appraised_val_reflecting_productivity_loss"
-    t.integer "assessed_val_reflecting_productivity_loss"
-    t.boolean "frss_exempt", default: false, null: false
-    t.integer "frss_qualify_yr"
-    t.string "frss_prorate_begin", limit: 25
-    t.string "frss_prorate_end", limit: 25
-    t.boolean "abmno_exempt", default: false, null: false
-    t.integer "abmno_qualify_yr"
-    t.string "abmno_prorate_begin", limit: 25
-    t.string "abmno_prorate_end", limit: 25
-    t.date "dv1_deferral_date"
-    t.date "dv2_deferral_date"
-    t.date "dv3_deferral_date"
-    t.date "dv4_deferral_date"
-    t.date "dv1s_deferral_date"
-    t.date "dv2s_deferral_date"
-    t.date "dv3s_deferral_date"
-    t.date "dv4s_deferral_date"
-    t.boolean "dis_exempt", default: false, null: false
-    t.integer "dis_qualify_yr"
-    t.string "dis_prorate_begin", limit: 25
-    t.string "dis_prorate_end", limit: 25
+    t.integer "prop_id", comment: "Property ID"
+    t.string "prop_type_cd", limit: 5, comment: "Property Type Code:\nR = Real\nP = Business Personal Property\nM = Mobile Home\nMN = Mineral\nA = Automobiles"
+    t.integer "prop_val_yr", comment: "Appraisal or Tax Year"
+    t.integer "sup_num", comment: "Supplement Version Number - 0 = represents certified data, supplemental data otherwise"
+    t.string "sup_action", limit: 2, comment: "Supplemental Action - If sup_num > 0, indicates the action to be taken on the property:\nA - Add\nM - Modify\nD - Delete"
+    t.string "sup_cd", limit: 10, comment: "Supplement Change Code - User defined"
+    t.string "sup_desc", limit: 500, comment: "Supplement Change Description"
+    t.string "geo_id", limit: 50, comment: "Geographic ID"
+    t.integer "py_owner_id", comment: "Property Year Owner ID – PACS Internal ID"
+    t.string "py_owner_name", limit: 70, comment: "Property Year Owner Name"
+    t.boolean "partial_owner", default: false, null: false, comment: "Partial Owner (T or F)\nThis indicates if there are other owners for this property.  The additional owners will appear as separate records in this layout."
+    t.integer "udi_group", comment: "This field indicates the UDI group that a partial owner is part of.  This is used to group multi owner properties."
+    t.string "py_addr_line1", limit: 60, comment: "Property Year Owner Address Line 1"
+    t.string "py_addr_line2", limit: 60, comment: "Property Year Owner Address Line 2"
+    t.string "py_addr_line3", limit: 60, comment: "Property Year Owner Address Line 3"
+    t.string "py_addr_city", limit: 50, comment: "Property Year Owner Address City"
+    t.string "py_addr_state", limit: 50, comment: "Property Year Owner Address State"
+    t.string "py_addr_country", limit: 5, comment: "Property Year Owner Address Country"
+    t.string "py_addr_zip", limit: 5, comment: "Property Year Owner Address Zip (Zip Only)"
+    t.string "py_addr_zip_cass", limit: 4, comment: "Property Year Owner Address Zip Cass (Cass Only)"
+    t.string "py_addr_zip_rt", limit: 2, comment: "Property Year Owner Address Zip Route (Route Only)"
+    t.boolean "py_confidential_flag", default: false, null: false, comment: "Property Year Owner Confidential Flag (T or F)"
+    t.boolean "py_address_suppress_flag", default: false, null: false, comment: "Property Year Owner\nAddress Suppression Flag (T or F)"
+    t.boolean "py_addr_ml_deliverable", default: false, null: false, comment: "Property Year Owner Address\nY = deliverable address\nN = undeliverable address"
+    t.string "situs_street_prefx", limit: 10, comment: "Situs/Location Street Prefix"
+    t.string "situs_street", limit: 50, comment: "Situs/Location Street"
+    t.string "situs_street_suffix", limit: 10, comment: "Situs/Location Street Suffix"
+    t.string "situs_city", limit: 30, comment: "Situs/Location City"
+    t.string "situs_zip", limit: 10, comment: "Situs/Location Zip"
+    t.string "legal_desc", limit: 255, comment: "Legal Description"
+    t.string "legal_desc2", limit: 255, comment: "Additional Legal Description"
+    t.decimal "legal_acreage", precision: 16, scale: 4, comment: "Legal Acreage (4 Decimals)"
+    t.string "abs_subdv_cd", limit: 10, comment: "Abstract/Subdivision code"
+    t.string "hood_cd", limit: 10, comment: "Neighborhood code"
+    t.string "block", limit: 50, comment: "Block"
+    t.string "tract_or_lot", limit: 50, comment: "Tract/lot"
+    t.integer "land_hstd_val", comment: "Land Homestead Value"
+    t.integer "land_non_hstd_val", comment: "Land Non-Homestead Value"
+    t.integer "imprv_hstd_val", comment: "Improvement Homestead Value"
+    t.integer "imprv_non_hstd_val", comment: "Improvement Non-Homestead value"
+    t.integer "ag_use_val", comment: "Agriculture Use Value"
+    t.integer "ag_market", comment: "Agriculture Market Value"
+    t.integer "timber_use", comment: "Timber Use Value"
+    t.integer "timber_market", comment: "Timber Market Value"
+    t.integer "appraised_val", comment: "Appraised Value"
+    t.integer "ten_percent_cap", comment: "Ten Percent Homestead Cap Adjustment"
+    t.integer "assessed_val", comment: "Assessed Value (Appraised - Cap)"
+    t.boolean "arb_protest_flag", default: false, null: false, comment: "ARB Protest Flag; indicates if a protest has been filed on behalf of this property.  (T / F)"
+    t.string "deed_book_id", limit: 20, comment: "Deed Book ID"
+    t.string "deed_book_page", limit: 20, comment: "Deed Book Page"
+    t.string "deed_dt", limit: 25, comment: "Deed Date"
+    t.integer "mortgage_co_id", comment: "Mortgage Company ID"
+    t.string "mortage_co_name", limit: 70, comment: "Name of Mortgage Company"
+    t.string "mortgage_acct_id", limit: 50, comment: "Mortgage Loan Number"
+    t.integer "jan1_owner_id", comment: "January 1 Owner ID"
+    t.string "jan1_owner_name", limit: 70, comment: "January 1 Owner Name"
+    t.string "jan1_addr_line1", limit: 60, comment: "January 1 Address Line 1"
+    t.string "jan1_addr_line2", limit: 60, comment: "January 1 Address Line 2"
+    t.string "jan1_addr_line3", limit: 60, comment: "January 1 Address Line 3"
+    t.string "jan1_addr_city", limit: 50, comment: "January 1 Address City"
+    t.string "jan1_addr_state", limit: 50, comment: "January 1 Address State"
+    t.string "jan1_addr_country", limit: 5, comment: "January 1 Address Country"
+    t.string "jan1_addr_zip", limit: 5, comment: "January 1 Address Zip  (Zip Only)"
+    t.string "jan1_addr_zip_cass", limit: 4, comment: "January 1 Address Zip Cass (Cass Only)"
+    t.string "jan1_addr_zip_rt", limit: 2, comment: "January 1 Address Zip  Route (Route Only)"
+    t.boolean "jan1_confidential_flag", default: false, null: false, comment: "January 1 Owner Confidential Flag (T or F)"
+    t.boolean "jan1_address_suppress_flag", default: false, null: false, comment: "January 1 Owner\nAddress Suppression Flag (T or F)"
+    t.boolean "jan1_ml_deliverable", default: false, null: false, comment: "January 1 Owner Address\nY = deliverable address\nN = undeliverable address"
+    t.boolean "hs_exempt", default: false, null: false, comment: "Homestead Exemption    (‘T’ or ‘F’)\n‘T’ indicates that the property has the exemption"
+    t.boolean "ov65_exempt", default: false, null: false, comment: "Over 65 Exemption (‘T’ or ‘F’)"
+    t.string "ov65_prorate_begin", limit: 25, comment: "date the exemption began – used for proration"
+    t.string "ov65_prorate_end", limit: 25, comment: "date the exemption ended – used for proration"
+    t.boolean "ov65s_exempt", default: false, null: false, comment: "Over 65 Surviving Spouse (‘T’ or ‘F’)"
+    t.boolean "dp_exempt", default: false, null: false, comment: "Disabled Person (‘T’ or ‘F’)"
+    t.boolean "dv1_exempt", default: false, null: false, comment: "Disabled Veteran - 10% to 30%  (‘T’ or ‘F’)"
+    t.boolean "dv1s_exempt", default: false, null: false, comment: "Disabled Veteran - 10% to 30%  Surviving Spouse"
+    t.boolean "dv2_exempt", default: false, null: false, comment: "Disabled Veteran - 31% to 50%  (‘T’ or ‘F’)"
+    t.boolean "dv2s_exempt", default: false, null: false, comment: "Disabled Veteran - 31% to 50% Surviving Spouse"
+    t.boolean "dv3_exempt", default: false, null: false, comment: "Disabled Veteran - 51% to 70% (T or F)"
+    t.boolean "dv3s_exempt", default: false, null: false, comment: "Disabled Veteran - 51% to 70% Surviving Spouse"
+    t.boolean "dv4_exempt", default: false, null: false, comment: "Disabled Veteran - 71% to 100%  (‘T’ or ‘F’)"
+    t.boolean "dv4s_exempt", default: false, null: false, comment: "Disabled Veteran - 71% to 100% Surviving Spouse"
+    t.boolean "ex_exempt", default: false, null: false, comment: "EX (Total Exemption) (‘T’ or ‘F’)"
+    t.string "ex_prorate_begin", limit: 25, comment: "Date the exemption began – used for proration"
+    t.string "ex_prorate_end", limit: 25, comment: "Date the exemption ended – used for proration"
+    t.boolean "lve_exempt", default: false, null: false, comment: "Leased vehicle exemption"
+    t.boolean "ab_exempt", default: false, null: false, comment: "Abatement (‘T’ or ‘F’)"
+    t.boolean "en_exempt", default: false, null: false, comment: "Energy  Exemption (‘T’ or ‘F’)"
+    t.boolean "fr_exempt", default: false, null: false, comment: "Freeport Exemption (‘T’ or ‘F’)"
+    t.boolean "ht_exempt", default: false, null: false, comment: "Historical Exemption (‘T’ or ‘F’)"
+    t.boolean "pro_exempt", default: false, null: false, comment: "Prorated Exemption (‘T’ or ‘F’)"
+    t.boolean "pc_exempt", default: false, null: false, comment: "Pollution Control Exemption (‘T’ or ‘F’)"
+    t.boolean "so_exempt", default: false, null: false, comment: "Solar Exemption (‘T’ or ‘F’)"
+    t.boolean "ex366_exempt", default: false, null: false, comment: "Exemption for properties under $500 (T or F)"
+    t.boolean "ch_exempt", default: false, null: false, comment: "Charitable Exemption (T or F)"
+    t.string "imprv_state_cd", limit: 10, comment: "State Code that is on the improvements"
+    t.string "land_state_cd", limit: 10, comment: "State Code that is on the land"
+    t.string "personal_state_cd", limit: 10, comment: "State Code that is on the personal property"
+    t.string "mineral_state_cd", limit: 10, comment: "State Code that is on the mineral"
+    t.integer "land_acres", comment: "Sum of the acres based on land segments"
+    t.integer "entity_agent_id", comment: "Agent for Entity Documents (I.E. Statements)\nIf id <> 0, then will contain information for the agent that is to receive entity documents"
+    t.string "entity_agent_name", limit: 70, comment: "Entity Agent Name"
+    t.string "entity_agent_addr_line1", limit: 60, comment: "Entity Agent Address Line 1"
+    t.string "entity_agent_addr_line2", limit: 60, comment: "Entity Agent Address Line 2"
+    t.string "entity_agent_addr_line3", limit: 60, comment: "Entity Agent Address Line 3"
+    t.string "entity_agent_city", limit: 50, comment: "Entity Agent Address City"
+    t.string "entity_agent_state", limit: 50, comment: "Entity Agent Address State"
+    t.string "entity_agent_country", limit: 5, comment: "Entity Agent Address Country"
+    t.string "entity_agent_zip", limit: 5, comment: "Entity Agent Address Zip (Zip Only)"
+    t.string "entity_agent_cass", limit: 4, comment: "Entity Agent Address Zip Cass (Cass Only)"
+    t.string "entity_agent_rt", limit: 2, comment: "Entity Agent Address Zip Route (Route Only)"
+    t.integer "ca_agent_id", comment: "Agent for Chief Appraiser Documents (I.E. Appraisal Notice)\nIf id <> 0, then will contain information for the agent that is to receive chief appraiser documents"
+    t.string "ca_agent_name", limit: 70, comment: "Chief Appraiser Agent Name"
+    t.string "ca_agent_addr_line1", limit: 60, comment: "Chief Appraiser Address Line 1"
+    t.string "ca_agent_addr_line2", limit: 60, comment: "Chief Appraiser Address Line 2"
+    t.string "ca_agent_addr_line3", limit: 60, comment: "Chief Appraiser Address Line 3"
+    t.string "ca_agent_city", limit: 50, comment: "Chief Appraiser Address City"
+    t.string "ca_agent_state", limit: 50, comment: "Chief Appraiser Address State"
+    t.string "ca_agent_country", limit: 5, comment: "Chief Appraiser Address Country"
+    t.string "ca_agent_zip", limit: 5, comment: "Chief Appraiser Address Zip (Zip Only)"
+    t.string "ca_agent_zip_cass", limit: 4, comment: "Chief Appraiser Address Zip Cass (Cass Only)"
+    t.string "ca_agent_zip_rt", limit: 2, comment: "Chief Appraiser Address Zip Route (Route Only)"
+    t.integer "arb_agent_id", comment: "Agent for ARB Documents (I.E. ARB Notice)\nIf id <> 0, then will contain information for the agent that is to receive arb documents"
+    t.string "arb_agent_name", limit: 70, comment: "ARB Agent Name"
+    t.string "arb_agent_addr_line1", limit: 60, comment: "ARB Agent Line 1"
+    t.string "arb_agent_addr_line2", limit: 60, comment: "ARB Agent Line 2"
+    t.string "arb_agent_addr_line3", limit: 60, comment: "ARB Agent Line 3"
+    t.string "arb_agent_city", limit: 50, comment: "ARB Agent City"
+    t.string "arb_agent_state", limit: 50, comment: "ARB Agent State"
+    t.string "arb_agent_country", limit: 5, comment: "ARB Agent County"
+    t.string "arb_agent_zip", limit: 5, comment: "ARB Agent Zip (Zip Only)"
+    t.string "arb_agent_zip_cass", limit: 4, comment: "ARB Agent Zip Cass (Cass Only)"
+    t.string "arb_agent_zip_rt", limit: 2, comment: "ARB Agent Zip Route (Route Only)"
+    t.string "mineral_type_of_int", limit: 5, comment: "Mineral Interest Type"
+    t.decimal "mineral_int_pct", precision: 15, scale: 10, comment: "Mineral Interest Percent (10 Decimals)"
+    t.string "productivity_use_code", limit: 3, comment: "Productivity Use Code"
+    t.integer "timber_78_market", comment: "1978 timber market value"
+    t.integer "ag_late_loss", comment: "Late ag loss"
+    t.integer "late_freeport_penalty", comment: "Late freeport penalty"
+    t.string "dba", limit: 40, comment: "Doing business as"
+    t.integer "market_value", comment: "Property market value"
+    t.date "ov65_deferral_date", comment: "OV65 Deferral Date"
+    t.date "dp_deferral_date", comment: "DP Deferral Date"
+    t.string "ref_id1", limit: 25, comment: "Property Reference ID 1"
+    t.string "ref_id2", limit: 25, comment: "Property Reference ID 2"
+    t.string "situs_num", limit: 15, comment: "Situs Number"
+    t.string "situs_unit", limit: 5, comment: "Situs Unit #"
+    t.integer "appr_owner_id", comment: "Current Appraisal Owner ID"
+    t.string "appr_owner_name", limit: 70, comment: "Current Appraisal Owner Name"
+    t.string "appr_addr_line1", limit: 60, comment: "Current Appraisal Address Line 1"
+    t.string "appr_addr_line2", limit: 60, comment: "Current Appraisal Address Line 2"
+    t.string "appr_addr_line3", limit: 60, comment: "Current Appraisal Address Line 3"
+    t.string "appr_addr_city", limit: 50, comment: "Current Appraisal Address City"
+    t.string "appr_addr_state", limit: 50, comment: "Current Appraisal Address State"
+    t.string "appr_addr_country", limit: 5, comment: "Current Appraisal Address Country"
+    t.string "appr_addr_zip", limit: 5, comment: "Current Appraisal Address Zip (Zip Only)"
+    t.string "appr_addr_zip_cass", limit: 4, comment: "Current Appraisal Address Zip Cass (Cass Only)"
+    t.string "appr_addr_zip_cass_route", limit: 2, comment: "Current Appraisal Address Zip Rt (Route Only)"
+    t.boolean "appr_ml_deliverable", default: false, null: false, comment: "Current Appraisal Owner Address\nY = deliverable address\nN = undeliverable address"
+    t.boolean "appr_confidential_flag", default: false, null: false, comment: "Current Appraisal Owner\nConfidential Flag (T or F)"
+    t.boolean "appr_address_suppress_flag", default: false, null: false, comment: "Current Appraisal Owner\nAddress Suppression Flag (T or F)"
+    t.string "appr_confidential_name", limit: 70, comment: "Current Appraisal Owner Confidential Name"
+    t.string "py_confidential_name", limit: 70, comment: "Property Year Owner Confidential Name"
+    t.string "jan1_confidential_name", limit: 70, comment: "Jan 1 Owner Confidential Name"
+    t.boolean "rendition_filed", default: false, null: false, comment: "Rendition Filed (T or F)"
+    t.date "rendition_date", comment: "Rendition Filed Date"
+    t.integer "rendition_penalty", comment: "If > 0, indicates that a Rendition Penalty should be calculated."
+    t.date "rendition_penalty_date_paid", comment: "Rendition 10% Penalty Date Paid"
+    t.integer "rendition_fraud_penalty", comment: "Rendition Fraud Penalty"
+    t.date "rendition_fraud_penalty_date_paid", comment: "Rendition Fraud Penalty Date Paid"
+    t.string "entities", limit: 140, comment: "Entities list"
+    t.boolean "eco_exempt", default: false, null: false, comment: "eco exemption"
+    t.integer "dataset_id", comment: "Unique number that identifies this export"
+    t.string "deed_num", limit: 50, comment: "Deed Number"
+    t.boolean "chodo_exempt", default: false, null: false, comment: "Exemption for charitable organizations providing low-income housing (T or F)"
+    t.boolean "local_option_pct_only_flag_hs", default: false, null: false, comment: "Local option flag for Homesite Percentage (T or F)"
+    t.boolean "local_option_pct_only_flag_ov65", default: false, null: false, comment: "Local option flag for OV65 exemption (T or F)"
+    t.boolean "local_option_pct_only_flag_ov65s", default: false, null: false, comment: "Local option flag for OV65S exemption (T or F)"
+    t.boolean "local_option_pct_only_flag_dp", default: false, null: false, comment: "Local option flag for DP exemption (T or F)"
+    t.boolean "freeze_only_flag_ov65", default: false, null: false, comment: "Freeze only flag for OV65 exemption (T or F)"
+    t.boolean "freeze_only_flag_ov65s", default: false, null: false, comment: "Freeze only flag for OV65S exemption (T or F)"
+    t.boolean "freeze_only_flag_dp", default: false, null: false, comment: "Freeze only flag for DP exemption (T or F)"
+    t.boolean "apply_percent_exemption_flag", default: false, null: false, comment: "Apply percent exemption flag (T or F)"
+    t.string "exemption_percentage", limit: 15, comment: "Exemption percentage (string representing a floating point number)"
+    t.boolean "vit_flag", default: false, null: false, comment: "VIT flag; T if property is VIT, otherwise F"
+    t.boolean "lih_exempt", default: false, null: false, comment: "Exemption for charitable organizations providing low-income housing with volunteer labor (T or F)"
+    t.boolean "git_exempt", default: false, null: false, comment: "Goods in Transit Exemption (‘T’ or ‘F’)"
+    t.boolean "dps_exempt", default: false, null: false, comment: "Disabled Person - Surviving Spouse (‘T’ or ‘F’)"
+    t.date "dps_deferral_date", comment: "DPS Deferral Date"
+    t.boolean "local_option_pct_only_flag_dps", default: false, null: false, comment: "Local option flag for DPS exemption (T or F)"
+    t.boolean "freeze_only_flag_dps", default: false, null: false, comment: "Freeze only flag for DPS exemption (T or F)"
+    t.boolean "dvhs_exempt", default: false, null: false, comment: "Disabled Veteran Homestead - 100% (T or F)"
+    t.integer "hs_qualify_yr", comment: "Qualify Year for HS exemption"
+    t.integer "ov65_qualify_yr", comment: "Qualify Year for OV65 exemption"
+    t.integer "ov65s_qualify_yr", comment: "Qualify Year for OV65S exemption"
+    t.integer "dp_qualify_yr", comment: "Qualify Year for DP exemption"
+    t.integer "dps_qualify_yr", comment: "Qualify Year for DPS exemption"
+    t.integer "dv1_qualify_yr", comment: "Qualify Year for DV1 exemption"
+    t.integer "dv1s_qualify_yr", comment: "Qualify Year for DV1S exemption"
+    t.integer "dv2_qualify_yr", comment: "Qualify Year for DV2 exemption"
+    t.integer "dv2s_qualify_yr", comment: "Qualify Year for DV2S exemption"
+    t.integer "dv3_qualify_yr", comment: "Qualify Year for DV3 exemption"
+    t.integer "dv3s_qualify_yr", comment: "Qualify Year for DV3S exemption"
+    t.integer "dv4_qualify_yr", comment: "Qualify Year for DV4 exemption"
+    t.integer "dv4s_qualify_yr", comment: "Qualify Year for DV4S exemption"
+    t.integer "dvhs_qualify_yr", comment: "Qualify Year for DVHS exemption"
+    t.integer "ex_qualify_yr", comment: "Qualify Year for EX exemption"
+    t.integer "ab_qualify_yr", comment: "Qualify Year for AB exemption"
+    t.integer "en_qualify_yr", comment: "Qualify Year for EN exemption"
+    t.integer "fr_qualify_yr", comment: "Qualify Year for FR exemption"
+    t.integer "ht_qualify_yr", comment: "Qualify Year for HT exemption"
+    t.integer "pro_qualify_yr", comment: "Qualify Year for PRO exemption"
+    t.integer "pc_qualify_yr", comment: "Qualify Year for PC exemption"
+    t.integer "so_qualify_yr", comment: "Qualify Year for SO exemption"
+    t.integer "ex366_qualify_yr", comment: "Qualify Year for EX366 exemption"
+    t.integer "ch_qualify_yr", comment: "Qualify Year for CH exemption"
+    t.integer "eco_qualify_yr", comment: "Qualify Year for ECO exemption"
+    t.integer "chodo_qualify_yr", comment: "Qualify Year for CHODO exemption"
+    t.integer "lih_qualify_yr", comment: "Qualify Year for LIH exemption"
+    t.integer "git_qualify_yr", comment: "Qualify Year for GIT exemption"
+    t.string "mortgage_addr_line1", limit: 60, comment: "Mortgage Company Address Line 1"
+    t.string "mortgage_addr_line2", limit: 60, comment: "Mortgage Company Address Line 2"
+    t.string "mortgage_addr_line3", limit: 60, comment: "Mortgage Company Address Line 3"
+    t.string "mortgage_addr_city", limit: 50, comment: "Mortgage Company Address City"
+    t.string "mortgage_addr_state", limit: 50, comment: "Mortgage Company Address State"
+    t.string "mortgage_addr_country", limit: 5, comment: "Mortgage Company Address Country"
+    t.string "mortgage_addr_zip", limit: 5, comment: "Mortgage Company Address Zip (Zip Only)"
+    t.string "mortgage_addr_zip_cass", limit: 4, comment: "Mortgage Company Address Zip Cass (Cass Only)"
+    t.string "mortgage_addr_zip_rt", limit: 2, comment: "Mortgage Company Address Zip Route (Route Only)"
+    t.boolean "mortgage_addr_ml_deliverable", default: false, null: false, comment: "Mortgage Company Address\nY = deliverable address\nN = undeliverable address"
+    t.string "sic_code", limit: 10, comment: "SIC Code (new position in file due to change in length from 5 to 10)"
+    t.boolean "omitted_property_flag", default: false, null: false, comment: "Omitted Property\nY = Omitted\nN = Not omitted"
+    t.string "hs_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "hs_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "ov65s_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "ov65s_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "dp_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "dp_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "dv1_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "dv1_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "dv1s_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "dv1s_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "dv2_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "dv2_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "dv2s_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "dv2s_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "dv3_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "dv3_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "dv3s_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "dv3s_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "dv4_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "dv4_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "dv4s_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "dv4s_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "lve_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "lve_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "ab_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "ab_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "en_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "en_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "fr_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "fr_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "ht_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "ht_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "pro_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "pro_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "pc_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "pc_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "so_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "so_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "ex366_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "ex366_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "ch_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "ch_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "dps_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "dps_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "eco_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "eco_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "chodo_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "chodo_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "lih_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "lih_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.string "git_prorate_begin", limit: 25, comment: "date the exemption began - used for proration"
+    t.string "git_prorate_end", limit: 25, comment: "date the exemption ended - used for proration"
+    t.boolean "clt_exempt", default: false, null: false, comment: "Exemption for community land trust (T or F)"
+    t.string "clt_prorate_begin", limit: 25, comment: "date the exemption began – used for proration"
+    t.string "clt_prorate_end", limit: 25, comment: "date the exemption ended – used for proration"
+    t.integer "clt_qualify_yr", comment: "Qualify Year for CLT exemption"
+    t.boolean "dvhss_exempt", default: false, null: false, comment: "Exemption for DVHS Surviving Spouse (T or F)"
+    t.string "dvhss_prorate_begin", limit: 25, comment: "date the exemption began – used for proration"
+    t.string "dvhss_prorate_end", limit: 25, comment: "date the exemption ended – used for proration"
+    t.integer "dvhss_qualify_yr", comment: "Qualify Year for DVHS Surviving Spouse exemption"
+    t.integer "omitted_imprv_hstd_val", comment: "Omitted Improvement Homestead Value"
+    t.integer "omitted_imprv_non_hstd_val", comment: "Omitted Improvement Non-Homestead Value"
+    t.string "dvhs_prorate_begin", limit: 25, comment: "date the exemption began – used for proration"
+    t.string "dvhs_prorate_end", limit: 25, comment: "date the exemption ended – used for proration"
+    t.boolean "ex_xd_exempt", default: false, null: false, comment: "EX-XD 11.181 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xd_qualify_yr", comment: "Qualify Year for EX-XD 11.181 exemption"
+    t.string "ex_xd_prorate_begin", limit: 25, comment: "Proration begin date for EX-XD 11.181 exemption"
+    t.string "ex_xd_prorate_end", limit: 25, comment: "Proration end date for EX-XD 11.181 exemption"
+    t.boolean "ex_xf_exempt", default: false, null: false, comment: "EX-XF 11.183 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xf_qualify_yr", comment: "Qualify Year for EX-XF 11.183 exemption"
+    t.string "ex_xf_prorate_begin", limit: 25, comment: "Proration begin date for EX-XF 11.183 exemption"
+    t.string "ex_xf_prorate_end", limit: 25, comment: "Proration end date for EX-XF 11.183 exemption"
+    t.boolean "ex_xg_exempt", default: false, null: false, comment: "EX-XG 11.184 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xg_qualify_yr", comment: "Qualify Year for EX-XG 11.184 exemption"
+    t.string "ex_xg_prorate_begin", limit: 25, comment: "Proration begin date for EX-XG 11.184 exemption"
+    t.string "ex_xg_prorate_end", limit: 25, comment: "Proration end date for EX-XG 11.184 exemption"
+    t.boolean "ex_xh_exempt", default: false, null: false, comment: "EX-XH 11.185 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xh_qualify_yr", comment: "Qualify Year for EX-XH 11.185 exemption"
+    t.string "ex_xh_prorate_begin", limit: 25, comment: "Proration begin date for EX-XH 11.185 exemption"
+    t.string "ex_xh_prorate_end", limit: 25, comment: "Proration end date for EX-XH 11.185 exemption"
+    t.boolean "ex_xi_exempt", default: false, null: false, comment: "EX-XI 11.19 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xi_qualify_yr", comment: "Qualify Year forEX-XI 11.19 exemption"
+    t.string "ex_xi_prorate_begin", limit: 25, comment: "Proration begin date for EX-XI 11.19 exemption"
+    t.string "ex_xi_prorate_end", limit: 25, comment: "Proration end date for EX-XI 11.19 exemption"
+    t.boolean "ex_xj_exempt", default: false, null: false, comment: "EX-XJ 11.21 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xj_qualify_yr", comment: "Qualify Year for EX-XJ 11.21 exemption"
+    t.string "ex_xj_prorate_begin", limit: 25, comment: "Proration begin date for EX-XJ 11.21 exemption"
+    t.string "ex_xj_prorate_end", limit: 25, comment: "Proration end date for EX-XJ 11.21 exemption"
+    t.boolean "ex_xl_exempt", default: false, null: false, comment: "EX-XL 11.231 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xl_qualify_yr", comment: "Qualify Year for EX-XL 11.231 exemption"
+    t.string "ex_xl_prorate_begin", limit: 25, comment: "Proration begin date for EX-XL 11.231 exemption"
+    t.string "ex_xl_prorate_end", limit: 25, comment: "Proration end date for EX-XL 11.231 exemption"
+    t.boolean "ex_xm_exempt", default: false, null: false, comment: "EX-XM 11.25 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xm_qualify_yr", comment: "Qualify Year for EX-XM 11.25 exemption"
+    t.string "ex_xm_prorate_begin", limit: 25, comment: "Proration begin date for EX-XM 11.25 exemption"
+    t.string "ex_xm_prorate_end", limit: 25, comment: "Proration end date for EX-XM 11.25 exemption"
+    t.boolean "ex_xn_exempt", default: false, null: false, comment: "EX-XN 11.252 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xn_qualify_yr", comment: "Qualify Year for EX-XN 11.252 exemption"
+    t.string "ex_xn_prorate_begin", limit: 25, comment: "Proration begin date for EX-XN 11.252 exemption"
+    t.string "ex_xn_prorate_end", limit: 25, comment: "Proration end date for EX-XN 11.252 exemption"
+    t.boolean "ex_xo_exempt", default: false, null: false, comment: "EX-XO 11.254 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xo_qualify_yr", comment: "Qualify Year for EX-XO 11.254 exemption"
+    t.string "ex_xo_prorate_begin", limit: 25, comment: "Proration begin date for EX-XO 11.254 exemption"
+    t.string "ex_xo_prorate_end", limit: 25, comment: "Proration end date for EX-XO 11.254 exemption"
+    t.boolean "ex_xp_exempt", default: false, null: false, comment: "EX-XP 11.271 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xp_qualify_yr", comment: "Qualify Year for EX-XP 11.271 exemption"
+    t.string "ex_xp_prorate_begin", limit: 25, comment: "Proration begin date for EX-XP 11.271 exemption"
+    t.string "ex_xp_prorate_end", limit: 25, comment: "Proration end date for EX-XP 11.271 exemption"
+    t.boolean "ex_xq_exempt", default: false, null: false, comment: "EX-XQ 11.29 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xq_qualify_yr", comment: "Qualify Year for EX-XQ 11.29 exemption"
+    t.string "ex_xq_prorate_begin", limit: 25, comment: "Proration begin date for EX-XQ 11.29 exemption"
+    t.string "ex_xq_prorate_end", limit: 25, comment: "Proration end date for EX-XQ exemption 11.29 exemption"
+    t.boolean "ex_xr_exempt", default: false, null: false, comment: "EX-XR 11.30 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xr_qualify_yr", comment: "Qualify Year for EX-XR 11.30 exemption"
+    t.string "ex_xr_prorate_begin", limit: 25, comment: "Proration begin date for EX-XR 11.30 exemption"
+    t.string "ex_xr_prorate_end", limit: 25, comment: "Proration end date for EX-XR 11.30 exemption"
+    t.boolean "ex_xs_exempt", default: false, null: false, comment: "EX-XS 11.33 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xs_qualify_yr", comment: "Qualify Year for EX-XS 11.33 exemption"
+    t.string "ex_xs_prorate_begin", limit: 25, comment: "Proration begin date for EX-XS 11.33 exemption"
+    t.string "ex_xs_prorate_end", limit: 25, comment: "Proration end date for EX-XS 11.33 exemption"
+    t.boolean "ex_xt_exempt", default: false, null: false, comment: "EX-XT 11.34 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xt_qualify_yr", comment: "Qualify Year for EX-XT 11.34 exemption"
+    t.string "ex_xt_prorate_begin", limit: 25, comment: "Proration begin date for EX-XT 11.34 exemption"
+    t.string "ex_xt_prorate_end", limit: 25, comment: "Proration end date for EX-XT 11.34 exemption"
+    t.boolean "ex_xu_exempt", default: false, null: false, comment: "EX-XU 11.23 exemption (‘T’ or ‘F’)"
+    t.integer "ex_xu_qualify_yr", comment: "Qualify Year for EX-XU 11.23 exemption"
+    t.string "ex_xu_prorate_begin", limit: 25, comment: "Proration begin date for EX-XU 11.23 exemption"
+    t.string "ex_xu_prorate_end", limit: 25, comment: "Proration end date for EX-XU 11.23 exemption"
+    t.boolean "ex_xv_exempt", default: false, null: false, comment: "EX-XV  exemption (‘T’ or ‘F’)"
+    t.integer "ex_xv_qualify_yr", comment: "Qualify Year for EX-XV exemption"
+    t.string "ex_xv_prorate_begin", limit: 25, comment: "Proration begin date for EX-XV exemption"
+    t.string "ex_xv_prorate_end", limit: 25, comment: "Proration end date for EX-XV exemption"
+    t.boolean "ex_xa_exempt", default: false, null: false, comment: "EX-XA  exemption (‘T’ or ‘F’)"
+    t.integer "ex_xa_qualify_yr", comment: "Qualify Year for EX-XA exemption"
+    t.string "ex_xa_prorate_begin", limit: 25, comment: "Proration begin date for EX-XA exemption"
+    t.string "ex_xa_prorate_end", limit: 25, comment: "Proration end date for EX-XA exemption"
+    t.integer "lve_qualify_yr", comment: "Qualify Year for LVE exemption"
+    t.boolean "ppv_exempt", default: false, null: false, comment: "Personal Property Vehicle exemption"
+    t.integer "ppv_qualify_yr", comment: "Qualify Year for PPV exemption"
+    t.string "ppv_prorate_begin", limit: 25, comment: "date PPV exemption began - used for proration"
+    t.string "ppv_prorate_end", limit: 25, comment: "date PPV exemption ended - used for proration"
+    t.boolean "dvch_exempt", default: false, null: false, comment: "Disabled Veteran Charity Homestead"
+    t.integer "dvch_qualify_yr", comment: "Qualify Year for DVCH exemption"
+    t.string "dvch_prorate_begin", limit: 25, comment: "date DVCH exemption began - used for proration"
+    t.string "dvch_prorate_end", limit: 25, comment: "date DVCH exemption ended - used for proration"
+    t.boolean "dvchs_exempt", default: false, null: false, comment: "Disabled Veteran Charity Homestead Spouse"
+    t.integer "dvchs_qualify_yr", comment: "Qualify Year for DVCHS exemption"
+    t.string "dvchs_prorate_begin", limit: 25, comment: "date DVCHS exemption began - used for proration"
+    t.string "dvchs_prorate_end", limit: 25, comment: "date DVCHS exemption ended - used for proration"
+    t.boolean "masss_exempt", default: false, null: false, comment: "Member Armed Services Surviving Spouse"
+    t.integer "masss_qualify_yr", comment: "Qualify Year for MASSS exemption"
+    t.string "masss_prorate_begin", limit: 25, comment: "date MASSS exemption began - used for proration"
+    t.string "masss_prorate_end", limit: 25, comment: "date MASSS exemption ended - used for proration"
+    t.integer "pp_late_interstate_allocation_val", comment: "Personal Property interstate allocation value that is subject to penalty"
+    t.integer "appraised_val_reflecting_productivity_loss", comment: "Appraised Value reflecting Productivity Loss"
+    t.integer "assessed_val_reflecting_productivity_loss", comment: "Assessed Value reflecting Productivity Loss"
+    t.boolean "frss_exempt", default: false, null: false, comment: "First Responder Surviving Spouse"
+    t.integer "frss_qualify_yr", comment: "Qualify Year for FRSS exemption"
+    t.string "frss_prorate_begin", limit: 25, comment: "date FRSS exemption began - used for proration"
+    t.string "frss_prorate_end", limit: 25, comment: "date FRSS exemption ended - used for proration"
+    t.boolean "abmno_exempt", default: false, null: false, comment: "ABMNO (Abatement-MNO) exemption"
+    t.integer "abmno_qualify_yr", comment: "Qualify Year for ABMNO exemption"
+    t.string "abmno_prorate_begin", limit: 25, comment: "date ABMNO exemption began - used for proration"
+    t.string "abmno_prorate_end", limit: 25, comment: "date ABMNO exemption ended - used for proration"
+    t.date "dv1_deferral_date", comment: "DV1 exemption deferral date"
+    t.date "dv2_deferral_date", comment: "DV2 exemption deferral date"
+    t.date "dv3_deferral_date", comment: "DV3 exemption deferral date"
+    t.date "dv4_deferral_date", comment: "DV4 exemption deferral date"
+    t.date "dv1s_deferral_date", comment: "DV1S exemption deferral date"
+    t.date "dv2s_deferral_date", comment: "DV2S exemption deferral date"
+    t.date "dv3s_deferral_date", comment: "DV3S exemption deferral date"
+    t.date "dv4s_deferral_date", comment: "DV4S exemption deferral date"
+    t.boolean "dis_exempt", default: false, null: false, comment: "Disaster Damage Exemption"
+    t.integer "dis_qualify_yr", comment: "Qualify Year for DIS exemption"
+    t.string "dis_prorate_begin", limit: 25, comment: "Date DIS exemption began - used for proration"
+    t.string "dis_prorate_end", limit: 25, comment: "Date DIS exemption ended - used for proration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "state_cds", force: :cascade do |t|
-    t.string "state_cd", limit: 10
-    t.string "state_cd_description", limit: 50
-    t.string "ptd_state_cd", limit: 10
-    t.string "ptd_state_cd_description", limit: 50
-    t.string "state_cd_year", limit: 5
+    t.string "state_cd", limit: 10, comment: "CAD State Property Tax Code"
+    t.string "state_cd_description", limit: 50, comment: "CAD State Property Tax Code Description"
+    t.string "ptd_state_cd", limit: 10, comment: "PTD State Property Tax Code"
+    t.string "ptd_state_cd_description", limit: 50, comment: "PTD State Property Tax Code Description"
+    t.string "state_cd_year", limit: 5, comment: "CAD State Property Tax Code Year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
