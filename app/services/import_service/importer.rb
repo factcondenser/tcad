@@ -2,18 +2,21 @@
 
 module ImportService
   class Importer
-    BATCH_SIZE = 2000
+    DEFAULT_BATCH_SIZE = 2000
+    DEFAULT_NUM_LINES_TO_DROP = 0
     ENCODING = 'ISO-8859-1'
 
-    def initialize(record_type)
+    def initialize(record_type, opts = {})
       @record_type = record_type
+      @batch_size = opts[:batch_size].presence&.to_i || DEFAULT_BATCH_SIZE
+      @num_lines_to_drop = opts[:num_lines_to_drop].presence&.to_i || DEFAULT_NUM_LINES_TO_DROP
     end
 
     def call
       batch_count = 0
       line_count = 0
 
-      file.lazy.each_slice(BATCH_SIZE) do |lines|
+      file.lazy.drop(num_lines_to_drop).each_slice(batch_size) do |lines|
         records = records_from_lines(lines, batch_count += 1, line_count)
         import_records(records)
 
@@ -25,17 +28,17 @@ module ImportService
 
     private
 
-    attr_reader :record_type
+    attr_reader :record_type, :batch_size, :num_lines_to_drop
 
     def records_from_lines(lines, batch_count, line_count)
-      lines.each_with_object([]) do |line, arr|
-        arr << record_class.new(attributes_from_line(line))
-
+      lines.map do |line|
         print "[#{self.class.name}] #{record_class} - processing batch #{batch_count} of #{total_batch_count} (line #{line_count += 1} of #{total_line_count})\r".light_cyan
+
+        record_class.new(attribute_hash_from_line(line))
       end
     end
 
-    def attributes_from_line(line)
+    def attribute_hash_from_line(line)
       fields.each_with_object({}) do |field, attributes|
         field_value = field.value_from_line(line)
         attributes[field.name] = field_value if field_value.present?
@@ -70,11 +73,11 @@ module ImportService
     end
 
     def total_batch_count
-      @total_batch_count ||= (total_line_count / BATCH_SIZE.to_f).ceil
+      @total_batch_count ||= (total_line_count / batch_size.to_f).ceil
     end
 
     def total_line_count
-      @total_line_count ||= `wc -l #{file_path}`.split[0].to_i
+      @total_line_count ||= `wc -l #{file_path}`.split[0].to_i - num_lines_to_drop
     end
   end
 end

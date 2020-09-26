@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 namespace :db do
-  desc 'Destroy model for the given record type. Usage: `rake db:destroy_model["example_record_type"]`'
+  desc 'Destroy model for the given record type. Usage: `rake db:destroy_model[example_record_type]`'
   task :destroy_model, [:record_type] => :environment do |task, args|
-    puts "[#{task.name}] running with args :#{args.to_hash}".light_cyan
+    puts "[#{task.name}] running with args:#{args.to_hash}".light_cyan
 
     record_type = args[:record_type]
 

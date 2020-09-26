@@ -21,12 +21,18 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'activerecord-import'
-gem 'colorize'
+
+# Custom
+gem 'activerecord-import', '~> 0.25'
+gem 'colorize', '~> 0.8'
+gem 'parallel', '~> 1.19'
+gem 'rubocop-rails', '~> 2.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+
+  # Custom
   gem 'pry-byebug'
   gem 'pry-rails'
 end

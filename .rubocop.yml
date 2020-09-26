@@ -9,6 +9,7 @@ AllCops:
     - db/schema.rb
     - node_modules/**/*
     - script/**/*
+  NewCops: enable
 
 # Commonly used screens these days easily fit more than 80 characters.
 Layout/LineLength:
