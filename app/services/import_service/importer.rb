@@ -2,38 +2,48 @@
 
 module ImportService
   class Importer
+    DEFAULT_CHUNK_SIZE = 50_000
     DEFAULT_BATCH_SIZE = 2000
-    DEFAULT_NUM_LINES_TO_DROP = 0
+    DEFAULT_START_FROM_LINE = 1
     ENCODING = 'ISO-8859-1'
 
     def initialize(record_type, opts = {})
       @record_type = record_type
+      @chunk_size = opts[:chunk_size].presence&.to_i || DEFAULT_CHUNK_SIZE
       @batch_size = opts[:batch_size].presence&.to_i || DEFAULT_BATCH_SIZE
-      @num_lines_to_drop = opts[:num_lines_to_drop].presence&.to_i || DEFAULT_NUM_LINES_TO_DROP
+      @start_from_line = opts[:start_from_line].presence&.to_i || DEFAULT_START_FROM_LINE
     end
 
     def call
-      batch_count = 0
-      line_count = 0
+      system(split_file_command)
 
-      file.lazy.drop(num_lines_to_drop).each_slice(batch_size) do |lines|
-        records = records_from_lines(lines, batch_count += 1, line_count)
-        import_records(records)
+      tmp_file_paths ||= Dir[tmp_dir_path.join('*')]
+      total_chunks = tmp_file_paths.length
 
-        line_count += lines.count
+      Parallel.each_with_index(tmp_file_paths) do |tmp_file_path, i|
+        process(tmp_file_path, i + 1, total_chunks)
       end
 
-      puts "[#{self.class.name}] #{record_class} - processed #{batch_count} of #{total_batch_count} batches (#{line_count} of #{total_line_count} lines)".light_green
+      system("rm -rf #{tmp_dir_path}")
     end
 
     private
 
-    attr_reader :record_type, :batch_size, :num_lines_to_drop
+    attr_reader :record_type, :batch_size, :start_from_line
 
-    def records_from_lines(lines, batch_count, line_count)
+    def process(tmp_file_path, current_chunk, total_chunks)
+      puts("processing chunk #{current_chunk} of #{total_chunks}".light_cyan)
+
+      File.open(tmp_file_path, "r:#{ENCODING}").lazy.each_slice(batch_size) do |lines|
+        records = records_from_lines(lines)
+        import_records(records)
+      end
+
+      puts("done processing chunk #{current_chunk} of #{total_chunks}".light_green)
+    end
+
+    def records_from_lines(lines)
       lines.map do |line|
-        print "[#{self.class.name}] #{record_class} - processing batch #{batch_count} of #{total_batch_count} (line #{line_count += 1} of #{total_line_count})\r".light_cyan
-
         record_class.new(attribute_hash_from_line(line))
       end
     end
@@ -60,8 +70,12 @@ module ImportService
       @fields ||= FieldsParser.new(record_type).call
     end
 
-    def file
-      @file ||= File.open(file_path, "r:#{ENCODING}")
+    def split_file_command
+      "mkdir -p #{tmp_dir_path}; tail -n +#{start_from_line} | split -l #{MAX_LINES_PER_TMP_FILE} #{file_path} #{tmp_dir_path}/"
+    end
+
+    def tmp_dir_path
+      @tmp_dir_path ||= Rails.root.join('tmp', record_type)
     end
 
     def file_path
@@ -70,14 +84,6 @@ module ImportService
 
     def record_class
       @record_class ||= record_type.camelize.constantize
-    end
-
-    def total_batch_count
-      @total_batch_count ||= (total_line_count / batch_size.to_f).ceil
-    end
-
-    def total_line_count
-      @total_line_count ||= `wc -l #{file_path}`.split[0].to_i - num_lines_to_drop
     end
   end
 end
