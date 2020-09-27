@@ -2,20 +2,25 @@
 
 module ImportService
   class Importer
-    DEFAULT_CHUNK_SIZE = 50_000
+    DEFAULT_CHUNK_SIZE = 25_000
     DEFAULT_BATCH_SIZE = 2000
-    DEFAULT_START_FROM_LINE = 1
     ENCODING = 'ISO-8859-1'
+    TCAD_EXPORT_FILES_LOCATION_URL = 'https://www.dropbox.com/sh/dh1idu6nx0wmt6n/AABSBEPDUUQIpY7olLYQ59Loa?dl=0'
 
     def initialize(record_type, opts = {})
       @record_type = record_type
       @chunk_size = opts[:chunk_size].presence&.to_i || DEFAULT_CHUNK_SIZE
       @batch_size = opts[:batch_size].presence&.to_i || DEFAULT_BATCH_SIZE
-      @start_from_line = opts[:start_from_line].presence&.to_i || DEFAULT_START_FROM_LINE
     end
 
     def call
-      system(split_file_command)
+      unless File.exist?(file_path)
+        puts("couldn't find #{file_path}", :light_red)
+        puts("TCAD export files can be downloaded from #{TCAD_EXPORT_FILES_LOCATION_URL}", :light_cyan)
+        return
+      end
+
+      split_file
 
       tmp_file_paths ||= Dir[tmp_dir_path.join('*')]
       total_chunks = tmp_file_paths.length
@@ -29,17 +34,17 @@ module ImportService
 
     private
 
-    attr_reader :record_type, :batch_size, :start_from_line
+    attr_reader :record_type, :chunk_size, :batch_size
 
     def process(tmp_file_path, current_chunk, total_chunks)
-      puts("processing chunk #{current_chunk} of #{total_chunks}".light_cyan)
+      puts("processing chunk #{current_chunk} of #{total_chunks}...", :light_cyan)
 
       File.open(tmp_file_path, "r:#{ENCODING}").lazy.each_slice(batch_size) do |lines|
         records = records_from_lines(lines)
         import_records(records)
       end
 
-      puts("done processing chunk #{current_chunk} of #{total_chunks}".light_green)
+      puts("finished chunk #{current_chunk} of #{total_chunks}", :light_green)
     end
 
     def records_from_lines(lines)
@@ -70,8 +75,14 @@ module ImportService
       @fields ||= FieldsParser.new(record_type).call
     end
 
+    def split_file
+      puts("splitting import file into chunks with max size of #{chunk_size} lines...\r", :light_cyan)
+      system(split_file_command)
+      puts("finished splitting import file", :light_green)
+    end
+
     def split_file_command
-      "mkdir -p #{tmp_dir_path}; tail -n +#{start_from_line} | split -l #{MAX_LINES_PER_TMP_FILE} #{file_path} #{tmp_dir_path}/"
+      "mkdir -p #{tmp_dir_path}; split -l #{chunk_size} #{file_path} #{tmp_dir_path}/"
     end
 
     def tmp_dir_path
@@ -84,6 +95,10 @@ module ImportService
 
     def record_class
       @record_class ||= record_type.camelize.constantize
+    end
+
+    def puts(message, color)
+      super("[#{self.class.name}] #{record_class} - #{message}".public_send(color))
     end
   end
 end
