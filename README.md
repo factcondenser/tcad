@@ -1,7 +1,7 @@
 # Travis Central Appraisal District Data
 This is a Rails app that takes data provided on the [Travis Central Appraisal District website](https://www.traviscad.org/reports-request/) and imports it into a Postgres database.
 
-Get the SQL dump [here](https://www.dropbox.com/s/xnncj7hz2ex10bs/tcad_2019.zip?dl=0).
+Get the SQL dump [here](https://www.dropbox.com/sh/l6td8ex1uavjcbx/AADExzD6i2kvBV7Ea0Glj8dHa?dl=0).
 
 ## Modifications made to the layout information
 - Changed `Field Name` from Title Case to snake_case for all `appr_hdrs` fields
